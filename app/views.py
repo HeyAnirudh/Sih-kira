@@ -11,9 +11,13 @@ from django import template
 
 @login_required(login_url="/login/")
 def index(request):
+
     
     context = {}
     context['segment'] = 'index'
+    context["temp"]='40'
+    context["ph"]='4'
+    context["turbi"]='50'
 
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))

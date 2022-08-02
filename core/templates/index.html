@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} Dashboard {% endblock %} 
+<!-- {% block title %} Dashboard {% endblock %}  -->
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -32,15 +32,15 @@
 							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
 								<div class="px-2 pb-2 pb-md-0 text-center">
 									<div id="circles-1">hello</div>
-									<h6 class="fw-bold mt-3 mb-0">New Users</h6>
+									<h6 class="fw-bold mt-3 mb-0">{{ turbi }}</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center">
 									<div id="circles-2"></div>
-									<h6 class="fw-bold mt-3 mb-0">Sales</h6>
+									<h6 class="fw-bold mt-3 mb-0">{{ temp }}</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center">
 									<div id="circles-3"></div>
-									<h6 class="fw-bold mt-3 mb-0">Subscribers</h6>
+									<h6 class="fw-bold mt-3 mb-0">{{ ph }}</h6>
 								</div>
 							</div>
 						</div>
@@ -64,10 +64,11 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
+		
 		Circles.create({
 			id:'circles-1',
 			radius:45,
-			value:60,
+			value:45,
 			maxValue:100,
 			width:7,
 			text: 100,
