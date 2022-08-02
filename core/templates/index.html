@@ -32,6 +32,7 @@
 							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
 								<div class="px-2 pb-2 pb-md-0 text-center">
 									<div id="circles-1">hello</div>
+<<<<<<< Updated upstream
 									<h6 class="fw-bold mt-3 mb-0">New Users</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center">
@@ -41,6 +42,17 @@
 								<div class="px-2 pb-2 pb-md-0 text-center">
 									<div id="circles-3"></div>
 									<h6 class="fw-bold mt-3 mb-0">Subscribers</h6>
+=======
+									<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
+								</div>
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-2"></div>
+									<h6 class="fw-bold mt-3 mb-0">Temperature</h6>
+								</div>
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-3"></div>
+									<h6 class="fw-bold mt-3 mb-0">PH</h6>
+>>>>>>> Stashed changes
 								</div>
 							</div>
 						</div>
@@ -64,13 +76,22 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
+<<<<<<< Updated upstream
 		Circles.create({
 			id:'circles-1',
 			radius:45,
 			value:60,
+=======
+		
+		
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:"{{ turbi }}",
+>>>>>>> Stashed changes
 			maxValue:100,
 			width:7,
-			text: 100,
+			text: "{{ turbi}}",
 			colors:['#f1f1f2', '#FF9E27'],
 			duration:1000,
 			wrpClass:'circles-wrp',
@@ -82,10 +103,10 @@
 		Circles.create({
 			id:'circles-2',
 			radius:45,
-			value:70,
+			value:"{{ temp }}",
 			maxValue:100,
 			width:7,
-			text: 36,
+			text:"{{ temp }}" ,
 			colors:['#f1f1f1', '#2BB930'],
 			duration:400,
 			wrpClass:'circles-wrp',
@@ -97,10 +118,10 @@
 		Circles.create({
 			id:'circles-3',
 			radius:45,
-			value:40,
+			value:"{{ ph }}",
 			maxValue:100,
 			width:7,
-			text: 12,
+			text: "{{ ph }}",
 			colors:['#f1f1f1', '#F25961'],
 			duration:400,
 			wrpClass:'circles-wrp',
