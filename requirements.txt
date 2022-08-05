@@ -10,3 +10,4 @@ python-decouple
 gunicorn
 whitenoise
 pyrebase
+firebase-admin
