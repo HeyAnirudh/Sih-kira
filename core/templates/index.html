@@ -6,22 +6,65 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-			
-	<div class="content">
-		<div class="panel-header bg-primary-gradient">
-			<div class="page-inner py-5">
-				<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-					<div>
-						<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-						<h5 class="text-white op-7 mb-2">Your water data biath</h5>
+
+<div class="content">
+	<div class="panel-header bg-primary-gradient">
+		<div class="page-inner py-5">
+			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+				<div>
+					<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+					<h5 class="text-white op-7 mb-2">Your water data biath</h5>
+				</div>
+				<div class="ml-md-auto py-2 py-md-0">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							style="border-radius:10px">
+							Add Sensors
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<button class="dropdown-item" id="sulphur">Suplhur</button>
+							<button class="dropdown-item" id="ammonia">Ammonia</button>
+							<button class="dropdown-item" id="cholrine">Cholrine</button>
+							<button class="dropdown-item" id="urea">Urea</button>
+							<button class="dropdown-item" id="floride">Floride</button>
+						</div>
 					</div>
-					<div class="ml-md-auto py-2 py-md-0">
-						
-						<a href="#" class="btn btn-secondary btn-round">Add Sensor</a>
-					</div>
+
+					<!-- <a href="#" class="btn btn-secondary btn-round">Add Sensor</a> -->
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="page-inner mt--5">
+		<div class="row mt--2">
+			<div class="col-md-6">
+				<div class="card full-height" style="right: -323px">
+					<div class="card-body">
+						<div class="card-title">Overall statistics</div>
+						<div class="card-category">Daily information about statistics in system</div>
+						<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-1">hello</div>
+								<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
+							</div>
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-2"></div>
+								<h6 class="fw-bold mt-3 mb-0">Tempreature</h6>
+							</div>
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-3"></div>
+								<h6 class="fw-bold mt-3 mb-0">pH</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- gidshgigk -->
+			</div>
+		</div>
+	</div>
+	<div id="diplaycontent">
 		<div class="page-inner mt--5">
 			<div class="row mt--2">
 				<div class="col-md-6">
@@ -29,86 +72,155 @@
 						<div class="card-body">
 							<div class="card-title">Overall statistics</div>
 							<div class="card-category">Daily information about statistics in system</div>
-							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-1">hello</div>
-									<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
+							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4" id="sub-chart">
 
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-5"></div>
+									<h6 class="fw-bold mt-3 mb-0">fluoride</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-2"></div>
-									<h6 class="fw-bold mt-3 mb-0">Tempreature</h6>
-								</div>
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-3"></div>
-									<h6 class="fw-bold mt-3 mb-0">pH</h6>
+									<div id="circles-6"></div>
+									<h6 class="fw-bold mt-3 mb-0">ammonia</h6>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
-			
-			
 		</div>
 	</div>
 
-{% endblock content %}
+	{% endblock content %}
 
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
+	<!-- Specific Page JS goes HERE  -->
+	{% block javascripts %}
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/static/assets/js/setting-demo.js"></script>
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
-		
+		const sulphurelement = (e) => {
+			const toggle = document.getElementById('displaycontent');
+			if (toggle.style.display === "none") {
+				toggle.style.display = "block";
+			} else {
+				toggle.style.display = "none";
+			}
+		}
+		// const ureaelement = (e) => {
+
+		// }
+		// const ammoniaelement = (e) => {
+
+		// }
+		// const chlorineelement = (e) => {
+
+		// }
+		// const fluronielement = (e) => {
+
+		// }
+		// const sulphur = document.querySelector('#sulphur');
+		// const urea = document.querySelector('#urea');
+		// const ammonia = document.querySelector('#ammonia');
+		// const chlorine = document.querySelector('#cholrine');
+		// const floride = document.querySelector('#floride');
+
+
+
+		sulphur.addEventListener('click', sulphurelement);
+		// urea.addEventListener('click', ureaelement);
+		// ammonia.addEventListener('click', ammoniaelement);
+		// chlorine.addEventListener('click', chlorineelement);
+		// floride.addEventListener('click', fluronielement);
+
+
 		Circles.create({
-			id:'circles-1',
-			radius:55,
-			value:"{{ turbi}}",
-			maxValue:100,
-			width:7,
+			id: 'circles-1',
+			radius: 55,
+			value: "{{ turbi}}",
+			maxValue: 100,
+			width: 7,
 			text: "{{ turbi}}",
-			colors:['#f1f1f2', '#FF9E27'],
-			duration:1000,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
+			colors: ['#f1f1f2', '#FF9E27'],
+			duration: 1000,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
 		})
 
 		Circles.create({
-			id:'circles-2',
-			radius:55,
-			value:"{{ temp }}",
-			maxValue:100,
-			width:7,
-			text:"{{ temp }}" ,
-			colors:['#f1f1f1', '#2BB930'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
+			id: 'circles-2',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#2BB930'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
 		})
 
+
 		Circles.create({
-			id:'circles-3',
-			radius:55,
-			value:"{{ ph }}",
-			maxValue:100,
-			width:7,
+			id: 'circles-3',
+			radius: 55,
+			value: "{{ ph }}",
+			maxValue: 100,
+			width: 7,
 			text: "{{ ph }}",
-			colors:['#f1f1f1', '#F25961'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
+			colors: ['#f1f1f1', '#F25961'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
+		})
+		Circles.create({
+			id: 'circles-4',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#2BB930'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
+		})
+		Circles.create({
+			id: 'circles-5',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#FF9E27'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
+		})
+		Circles.create({
+			id: 'circles-6',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#F25961'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
 		})
 
 		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
@@ -117,7 +229,7 @@
 			type: 'bar',
 			data: {
 				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-				datasets : [{
+				datasets: [{
 					label: "Total Income",
 					backgroundColor: '#ff9e27',
 					borderColor: 'rgb(23, 125, 255)',
@@ -135,22 +247,22 @@
 						ticks: {
 							display: false //this will remove only the label
 						},
-						gridLines : {
+						gridLines: {
 							drawBorder: false,
-							display : false
+							display: false
 						}
 					}],
-					xAxes : [ {
-						gridLines : {
+					xAxes: [{
+						gridLines: {
 							drawBorder: false,
-							display : false
+							display: false
 						}
 					}]
 				},
 			}
 		});
 
-		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+		$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
 			type: 'line',
 			height: '70',
 			width: '100%',
@@ -158,6 +270,7 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
+
 	</script>
 
-{% endblock javascripts %}
+	{% endblock javascripts %}
