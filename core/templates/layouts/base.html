@@ -62,7 +62,7 @@
 		position: relative;	
 		top: -15px;
 		background-color: #FCBC51; 
-		width:  "{{ ans}}"; 
+		width: var(--width); 
 		background-image: linear-gradient(
 			  45deg, rgb(252,163,17) 25%, 
 			  transparent 25%, transparent 50%, 
@@ -73,7 +73,7 @@
 	   
 	  @keyframes progressAnimationStrike {
 		   from { width: 0 }
-		   to   { width: "{{ ans}}" }
+		   to   { width: var(--width) }
 	  }
 	  </style>
 	  
