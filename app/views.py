@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 """
 Copyright (c) 2019 - present AppSeed.us
 """
@@ -12,7 +13,7 @@ import pyrebase
 import firebase_admin
 from firebase_admin import credentials
 
-
+cred = credentials.Certificate("C:\\Users\\Anirudh soni\\Desktop\\Firebase key\\hydrosense-2cc3a-firebase-adminsdk-bl3a8-0481c30fb9.json")
 
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
@@ -63,7 +64,7 @@ def waterQuality():
 
     return ans
 
-print(waterQuality())
+
 @login_required(login_url="/login/")
 def index(request):
 
@@ -73,7 +74,7 @@ def index(request):
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
-    context["ans"] = (pH_Calc(context["ph"]) + turb_Calc( context["turbi"]) + temp_Calc(context["temp"]))//3
+    context["ans"] = 7
 
     
 
@@ -86,7 +87,7 @@ def pages(request):
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
-
+        
         load_template      = request.path.split('/')[-1]
         context['segment'] = load_template
         
