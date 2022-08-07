@@ -93,6 +93,52 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">    
+		<div class="progress progress-striped">
+		  <div class="progress-bar">
+		  </div>                       
+		</div> 
+	  </div>
+	  
+	  <div id="key" class="container">    
+		<img id="ima">  
+		<h1 id="text1"> </h1>
+	  </div>
+	<script>
+	var result = 10;
+	  if(result >0 && result <=20)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
+		  
+	  document.getElementById("text1").innerHTML = "yourTextHere";
+	  }
+	  else if(result>20 &&result<=40)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+	  document.getElementById("text1").innerHTML = "yourTextHere";
+		}
+		
+	  else if(result>40 &&result<=60)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+		  document.getElementById("text1").innerHTML = "yourTextHere";
+		}
+		
+	   else if(result>60 &&result<=80)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  document.getElementById("text1").innerHTML = "yourTextHere";
+		}
+		
+	  else
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+		  document.getElementById("text1").innerHTML = "yourTextHere";
+		}
+	  </script>
 
 	{% endblock content %}
 
