@@ -68,21 +68,26 @@
 			<h3>analized values is <strong>{{ ans }}</strong></h3>
 		</div>
 	</div>
-	<div id="diplaycontent">
+	<div id="displaycontent">
 		<div class="page-inner mt--5">
 			<div class="row mt--2">
 				<div class="col-md-6">
 					<div class="card full-height" style="right: -323px">
 						<div class="card-body">
-							<div class="card-title">Overall statistics</div>
-							<div class="card-category">Daily information about statistics in system</div>
+							<a id='crossButton'><img id='crossButton' src="/static/assets/img/cross.svg" alt="Cross button" style="position: relative;width: 25px;height: 25px;right: -389px;"></a>
+							<!-- <div class="card-title">Overall statistics</div>
+							<div class="card-category">Daily information about statistics in system</div> -->
 							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4" id="sub-chart">
 
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-5"></div>
+								<div class="px-2 pb-2 pb-md-0 text-center" id="fluorideDiv">
+									<div id="circles-4"></div>
 									<h6 class="fw-bold mt-3 mb-0">fluoride</h6>
 								</div>
-								<div class="px-2 pb-2 pb-md-0 text-center">
+								<div class="px-2 pb-2 pb-md-0 text-center" id="sulphurDiv">
+									<div id="circles-5"></div>
+									<h6 class="fw-bold mt-3 mb-0">sulphur</h6>
+								</div>
+								<div class="px-2 pb-2 pb-md-0 text-center" id="ammoniaDiv">
 									<div id="circles-6"></div>
 									<h6 class="fw-bold mt-3 mb-0">ammonia</h6>
 								</div>
@@ -150,40 +155,82 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
-		const sulphurelement = (e) => {
-			const toggle = document.getElementById('displaycontent');
-			if (toggle.style.display === "none") {
-				toggle.style.display = "block";
-			} else {
-				toggle.style.display = "none";
+		
+		const toggleFunc = (toggleState) =>{
+			if (toggleState.style.display === "none") {
+				toggleState.style.display = "block";
+			} 
+			else {
+				toggleState.style.display = "none";
 			}
 		}
-		// const ureaelement = (e) => {
+		(()=>{
+			window.onload = () =>{
+				document.getElementById('displaycontent').style.display = "none";
+				document.getElementById('fluorideDiv').style.display='none';
+				document.getElementById('sulphurDiv').style.display='none';
+				document.getElementById('ammoniaDiv').style.display='none';
+			}
+		})()
 
-		// }
-		// const ammoniaelement = (e) => {
+		const dropdownMenuButton = document.getElementById('dropdownMenuButton')
+		.addEventListener('click',(e)=>(showCard(e)));
 
-		// }
-		// const chlorineelement = (e) => {
+		const showCard = (event) =>{
+			const toggle = document.getElementById('displaycontent'); 
+			console.log(toggle)
+			if (toggle.style.display === "none") {
+				toggle.style.display = "block";
+			} 
+		}
+		const CloseFuction = (e) =>{
+			e.preventDefault()
+			document.getElementById('displaycontent').style.display = "none"
+		}
+		const sulphurelement = (e) => {
+			const sulphurDiv = document.getElementById('sulphurDiv');
+			console.log("mkc");
+			console.log(sulphurDiv);
+			toggleState(sulphurDiv);
+			if (sulphurDiv.style.display === "none") {
+				sulphurDiv.style.display = "block";
+			} 
+			else {
+				sulphurDiv.style.display = "none";
+			}
+		}
+		const ammoniaelement = (e) => {
+			const ammoniaDiv = document.getElementById('ammoniaDiv');
+			console.log("mkc")
+			console.log(ammoniaDiv)
+			if (ammoniaDiv.style.display === "none") {
+				ammoniaDiv.style.display = "block";
+			} 
+			else {
+				ammoniaDiv.style.display = "none";
+			}
+		}
+		const fluronielement = (e) => {
+			const fluorideDiv = document.getElementById('fluorideDiv');
+			console.log("mkc")
+			console.log(fluorideDiv)
+			if (fluorideDiv.style.display === "none") {
 
-		// }
-		// const fluronielement = (e) => {
-
-		// }
-		// const sulphur = document.querySelector('#sulphur');
-		// const urea = document.querySelector('#urea');
-		// const ammonia = document.querySelector('#ammonia');
-		// const chlorine = document.querySelector('#cholrine');
-		// const floride = document.querySelector('#floride');
-
-
+				fluorideDiv.style.display = "block";
+			} 
+			else {
+				fluorideDiv.style.display = "none";
+			}
+		}
+		const sulphur = document.querySelector('#sulphur');
+		const ammonia = document.querySelector('#ammonia');
+		const floride = document.querySelector('#floride');
+		const CrossButton = document.querySelector('#crossButton')
 
 		sulphur.addEventListener('click', sulphurelement);
-		// urea.addEventListener('click', ureaelement);
-		// ammonia.addEventListener('click', ammoniaelement);
-		// chlorine.addEventListener('click', chlorineelement);
-		// floride.addEventListener('click', fluronielement);
-
+		ammonia.addEventListener('click', ammoniaelement);
+		floride.addEventListener('click', fluronielement);
+		CrossButton.addEventListener('click', (e)=>CloseFuction(e));
 
 		Circles.create({
 			id: 'circles-1',

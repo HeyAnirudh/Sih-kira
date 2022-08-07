@@ -13,6 +13,7 @@ import firebase_admin
 from firebase_admin import credentials
 
 
+
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
   "authDomain": "hydrosense-2cc3a.firebaseapp.com",
@@ -85,7 +86,7 @@ def pages(request):
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
-        
+
         load_template      = request.path.split('/')[-1]
         context['segment'] = load_template
         
