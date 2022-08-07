@@ -25,9 +25,10 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<button class="dropdown-item" id="sulphur">Suplhur</button>
 							<button class="dropdown-item" id="ammonia">Ammonia</button>
+							<button class="dropdown-item" id="floride">Floride</button>
 							<button class="dropdown-item" id="cholrine">Cholrine</button>
 							<button class="dropdown-item" id="urea">Urea</button>
-							<button class="dropdown-item" id="floride">Floride</button>
+							
 						</div>
 					</div>
 
@@ -77,15 +78,15 @@
 
 								<div class="px-2 pb-2 pb-md-0 text-center" id="fluorideDiv">
 									<div id="circles-4"></div>
-									<h6 class="fw-bold mt-3 mb-0">fluoride</h6>
+									<h6 class="fw-bold mt-3 mb-0">Fluoride</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center" id="sulphurDiv">
 									<div id="circles-5"></div>
-									<h6 class="fw-bold mt-3 mb-0">sulphur</h6>
+									<h6 class="fw-bold mt-3 mb-0">Sulphur</h6>
 								</div>
 								<div class="px-2 pb-2 pb-md-0 text-center" id="ammoniaDiv">
 									<div id="circles-6"></div>
-									<h6 class="fw-bold mt-3 mb-0">ammonia</h6>
+									<h6 class="fw-bold mt-3 mb-0">Ammonia</h6>
 								</div>
 							</div>
 						</div>
@@ -151,7 +152,7 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
-		
+		document.getElementById('displaycontent').style.display = "none";
 		const toggleFunc = (toggleState) =>{
 			if (toggleState.style.display === "none") {
 				toggleState.style.display = "block";
@@ -187,7 +188,6 @@
 			const sulphurDiv = document.getElementById('sulphurDiv');
 			console.log("mkc");
 			console.log(sulphurDiv);
-			toggleState(sulphurDiv);
 			if (sulphurDiv.style.display === "none") {
 				sulphurDiv.style.display = "block";
 			} 
