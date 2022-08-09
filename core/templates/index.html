@@ -28,6 +28,7 @@
 							<button class="dropdown-item" id="floride">Floride</button>
 						
 						</div>
+						<a href="{% url 'chart' %}">click</a>
 					</div>
 
 					<!-- <a href="#" class="btn btn-secondary btn-round">Add Sensor</a> -->
@@ -150,6 +151,7 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
+		console.log("{{ temp }} {{ ph }} {{ turbi }} {{ ans }}")
 		document.getElementById('displaycontent').style.display = "none";
 		const toggleFunc = (toggleState) =>{
 			if (toggleState.style.display === "none") {
