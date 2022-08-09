@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 """
 Copyright (c) 2019 - present AppSeed.us
 """
@@ -17,6 +18,8 @@ credJson = credentials.Certificate("./app/ServiceAccountKey.json")
 firebase_admin.initialize_app(credJson)
 db = firestore.client()
 db.collection('test').document('testdoc').set({"name":"keshav","age":699})
+
+
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
   "authDomain": "hydrosense-2cc3a.firebaseapp.com",
@@ -68,7 +71,7 @@ def waterQuality():
 
     return ans
 
-print(waterQuality())
+
 @login_required(login_url="/login/")
 def index(request):
 
@@ -77,7 +80,7 @@ def index(request):
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
-    context["ans"] = (pH_Calc(context["ph"]) + turb_Calc( context["turbi"]) + temp_Calc(context["temp"]))//3
+    context["ans"] = 7
 
     # print(context["temp"],context["ph"],context["turbi"],context["ans"])
     
@@ -92,7 +95,7 @@ def pages(request):
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
-
+        
         load_template      = request.path.split('/')[-1]
         context['segment'] = load_template
         
