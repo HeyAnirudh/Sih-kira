@@ -12,8 +12,13 @@ from django import template
 import pyrebase
 import firebase_admin
 from firebase_admin import credentials
+from firebase_admin import firestore
+#firestore intitializations
+credJson = credentials.Certificate("./app/ServiceAccountKey.json")
+firebase_admin.initialize_app(credJson)
+db = firestore.client()
+db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
-#cred = credentials.Certificate("C:\\Users\\Anirudh soni\\Desktop\\Firebase key\\hydrosense-2cc3a-firebase-adminsdk-bl3a8-0481c30fb9.json")
 
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
@@ -27,6 +32,8 @@ config= {
 firebase=pyrebase.initialize_app(config)
 auth=firebase.auth()
 database=firebase.database()
+
+
 def pH_Calc(pH):
     return 10 if pH == 7 else int(10-(abs(pH - 7)/0.5)*2) 
 
@@ -70,14 +77,15 @@ def index(request):
 
     
     context = {}
-    context['segment'] = 'index'
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
     context["ans"] = 7
 
+    # print(context["temp"],context["ph"],context["turbi"],context["ans"])
     
-
+    db.collection('testSensor').document().set(context)
+    
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))
 
@@ -105,6 +113,7 @@ def pages(request):
         return HttpResponse(html_template.render(context, request))
 
 
+
 def ph(request):
     return render(request,"information-pages\ph.html")
 
@@ -113,3 +122,32 @@ def turbidity(request):
 
 def temperature(request):
     return render(request,"information-pages\temperature.html")
+
+@login_required(login_url="/login/")
+def singleLineChart(request):
+
+    
+    data = db.collection('testSensor').get()
+    print(data)
+    temperatureData = []
+    phData=[]
+    turbidityData=[]
+    for doc in data:
+        a= doc.to_dict()
+        temp=a['temp']
+        ph=a['ph']
+        turb=a['turbi']
+        temperatureData.append(temp)
+        phData.append(ph)
+        turbidityData.append(turb)
+    print(temperatureData)
+    print(phData)
+    print(turbidityData)
+    chartContext = {
+        "temperatureData":temperatureData,
+        "phData":phData,
+        "turbidityData":turbidityData
+    }
+    html_template = loader.get_template( 'charts.html' )
+    return render(request ,'charts.html',chartContext)
+
