@@ -107,3 +107,9 @@ def pages(request):
 
 def ph(request):
     return render(request,"information-pages\ph.html")
+
+def turbidity(request):
+    return render(request,"information-pages\turbidity.html")
+
+def temperature(request):
+    return render(request,"information-pages\temperature.html")
