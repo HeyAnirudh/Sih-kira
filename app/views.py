@@ -19,10 +19,9 @@ firebase_admin.initialize_app(credJson)
 db = firestore.client()
 db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
-<<<<<<< HEAD
+
 #cred = credentials.Certificate("C:\\Users\\Anirudh soni\\Desktop\\Firebase key\\hydrosense-2cc3a-firebase-adminsdk-bl3a8-0481c30fb9.json")
-=======
->>>>>>> 0059ec91f5a0d0e9b91f00d69a173fe2cb9e3d97
+
 
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
@@ -115,7 +114,7 @@ def pages(request):
     
         html_template = loader.get_template( 'page-500.html' )
         return HttpResponse(html_template.render(context, request))
-<<<<<<< HEAD
+
 
 
 def ph(request):
@@ -126,7 +125,7 @@ def turbidity(request):
 
 def temperature(request):
     return render(request,"information-pages\temperature.html")
-=======
+
 @login_required(login_url="/login/")
 def singleLineChart(request):
 
@@ -154,4 +153,4 @@ def singleLineChart(request):
     }
     html_template = loader.get_template( 'charts.html' )
     return render(request ,'charts.html',chartContext)
->>>>>>> 0059ec91f5a0d0e9b91f00d69a173fe2cb9e3d97
+
