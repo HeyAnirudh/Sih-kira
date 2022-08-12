@@ -4,12 +4,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 	<title>
-        Hydrosene - {% block title %}{% endblock %} | water monitor
+        Hydrosense - {% block title %}{% endblock %} | water monitor
     </title>
 
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="/static/assets/img/icon.ico" type="image/x-icon"/>
-	<link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark">
+	<!-- <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-atlantis-dark"> -->
 
 	<!-- Fonts and icons -->
 	<script src="/static/assets/js/plugin/webfont/webfont.min.js"></script>
@@ -30,6 +30,57 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="/static/assets/css/demo.css">
+<<<<<<< Updated upstream
+=======
+	<style>
+	body {
+		font-family: 'Montserrat', sans-serif;
+	  
+	  }
+	  
+	  .container {
+		margin: 100px auto;
+		width: 500px;
+		text-align: center;
+	  }
+	  
+	  .progress {
+		padding: 6px;
+		background: rgba(0, 0, 0, 0.25);
+		border-radius: 6px;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 5 5px rgba(255, 255, 255, 0.08);
+	  }
+	  
+	  .progress-bar {	
+		height: 30px;
+		  background-color: #ee303c;  
+		border-radius: 4px; 
+		transition: 0.9s linear;  
+		transition-property: width, background-color;    
+	  }
+	  
+	  .progress-striped .progress-bar { 
+		left:-6px;
+		position: relative;	
+		top: -15px;
+		background-color: #FCBC51; 
+		width: var(--width); 
+		background-image: linear-gradient(
+			  45deg, rgb(204, 27, 27) 20%, 
+			  transparent 25%, transparent 40%, 
+			  rgb(252,163,17) 60%, rgb(252,163,17) 80%,
+			  rgb(252,163,17) 100%,
+			  transparent 75%, transparent);
+		animation: progressAnimationStrike 3s;
+	  }
+	   
+	  @keyframes progressAnimationStrike {
+		   from { width: 0 }
+		   to   { width: var(--width) }
+	  }
+	  </style>
+	  
+>>>>>>> Stashed changes
 
     <!-- Specific Page CSS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
