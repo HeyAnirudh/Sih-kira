@@ -6,54 +6,101 @@
 {% block stylesheets %}{% endblock stylesheets %}
 
 {% block content %}
-			
-	<div class="content">
-		<div class="panel-header bg-primary-gradient">
-			<div class="page-inner py-5">
-				<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
-					<div>
-						<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-						<h5 class="text-white op-7 mb-2">Your water data biath</h5>
-					</div>
-					<div class="ml-md-auto py-2 py-md-0">
+
+<div class="content">
+	<div class="panel-header bg-primary-gradient">
+		<div class="page-inner py-5">
+			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+				<div>
+					<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+					<h5 class="text-white op-7 mb-2">Your water data biath</h5>
+				</div>
+				<div class="ml-md-auto py-2 py-md-0">
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+							style="border-radius:10px">
+							Add Sensors
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<button class="dropdown-item" id="sulphur">Suplhur</button>
+							<button class="dropdown-item" id="ammonia">Ammonia</button>
+							<button class="dropdown-item" id="floride">Floride</button>
 						
-						<a href="#" class="btn btn-secondary btn-round">Add Sensor</a>
+						</div>
+						<a href="{% url 'chart' %}">click</a>
 					</div>
+
+					<!-- <a href="#" class="btn btn-secondary btn-round">Add Sensor</a> -->
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="page-inner mt--5">
+		<div class="row mt--2">
+			<div class="col-md-6">
+				<div class="card full-height" style="right: -323px">
+					<div class="card-body">
+						<div class="card-title">Overall statistics</div>
+						<div class="card-category">Daily information about statistics in system</div>
+						<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+							<a href="/turbidity.html" style="color:inherit">
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-1">hello</div>
+								<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
+							</div>
+						</a>
+						<a href="/temperature.html" style="color:inherit">
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-2"></div>
+								<h6 class="fw-bold mt-3 mb-0">Temperature</h6>
+							</div>
+						</a>
+						<a href="/ph.html" style="color:inherit">
+							<div class="px-2 pb-2 pb-md-0 text-center">
+								<div id="circles-3"></div>
+								<h6 class="fw-bold mt-3 mb-0">pH</h6>
+							</div>
+						</a>
+						</div>
+					</div>
+				</div>
+				<!-- gidshgigk -->
+			</div>
+		</div>
+	</div>
+	<div id="displaycontent">
 		<div class="page-inner mt--5">
 			<div class="row mt--2">
 				<div class="col-md-6">
 					<div class="card full-height" style="right: -323px">
 						<div class="card-body">
-							<div class="card-title">Overall statistics</div>
-							<div class="card-category">Daily information about statistics in system</div>
-							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-1">hello</div>
-									<h6 class="fw-bold mt-3 mb-0">{{ turbi }}</h6>
+							<a id='crossButton'><img id='crossButton' src="/static/assets/img/cross.svg" alt="Cross button" style="position: relative;width: 25px;height: 25px;right: -389px;"></a>
+							<!-- <div class="card-title">Overall statistics</div>
+							<div class="card-category">Daily information about statistics in system</div> -->
+							<div class="d-flex flex-wrap justify-content-around pb-2 pt-4" id="sub-chart">
+
+								<div class="px-2 pb-2 pb-md-0 text-center" id="fluorideDiv">
+									<div id="circles-4"></div>
+									<h6 class="fw-bold mt-3 mb-0">Fluoride</h6>
 								</div>
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-2"></div>
-									<h6 class="fw-bold mt-3 mb-0">{{ temp }}</h6>
+								<div class="px-2 pb-2 pb-md-0 text-center" id="sulphurDiv">
+									<div id="circles-5"></div>
+									<h6 class="fw-bold mt-3 mb-0">Sulphur</h6>
 								</div>
-								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-3"></div>
-									<h6 class="fw-bold mt-3 mb-0">{{ ph }}</h6>
+								<div class="px-2 pb-2 pb-md-0 text-center" id="ammoniaDiv">
+									<div id="circles-6"></div>
+									<h6 class="fw-bold mt-3 mb-0">Ammonia</h6>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
-			
-			
 		</div>
 	</div>
-<<<<<<< Updated upstream
+
 
 {% endblock content %}
 
@@ -111,16 +158,158 @@
 
 	<!-- Specific Page JS goes HERE  -->
 	{% block javascripts %}
->>>>>>> Stashed changes
+
+	<div class="container">    
+		<div class="progress progress-striped">
+		  <div class="progress-bar" style="--width: {{ans}}%; ">
+		  </div>                       
+		</div> 
+	  </div>
+	  
+	  <div id="key" class="container">    
+		<img id="ima">  
+		<h1 id="text1"> </h1>
+	  </div>
+	
+	{% endblock content %}
+
+	<!-- Specific Page JS goes HERE  -->
+	{% block javascripts %}
+
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/static/assets/js/setting-demo.js"></script>
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
+		var result ="{{ ans }}";
+	console.log(result);
+	  if(result >0 && result <=2)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
+		  
+	  document.getElementById("text1").innerHTML = "{{ ans }}";
+	  }
+	  else if(result>2 &&result<=4)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+	  document.getElementById("text1").innerHTML = "{{ ans }}";
+		}
 		
+	  else if(result>4 &&result<=6)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+		  document.getElementById("text1").innerHTML = "{{ ans }}";
+		}
+		
+	   else if(result>6 &&result<=8)
+		{
+	  document.getElementById("ima").src="https://c.tenor.com/fo0KiI5mMtAAAAAi/dank-laugh.gif";
+		  document.getElementById("text1").innerHTML = "{{ ans }}";
+		}
+		
+	  else
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+		  document.getElementById("text1").innerHTML = "{{ ans }}";
+		}
+
+	  </script>
+	  
+
+	<!-- Specific Page JS goes HERE  -->
+	
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="/static/assets/js/setting-demo.js"></script>
+	<script src="/static/assets/js/demo.js"></script>
+
+	<script>
+		console.log("{{ temp }} {{ ph }} {{ turbi }} {{ ans }}")
+		document.getElementById('displaycontent').style.display = "none";
+		const toggleFunc = (toggleState) =>{
+			if (toggleState.style.display === "none") {
+				toggleState.style.display = "block";
+			} 
+			else {
+				toggleState.style.display = "none";
+			}
+		}
+		(()=>{
+			window.onload = () =>{
+				document.getElementById('displaycontent').style.display = "none";
+				document.getElementById('fluorideDiv').style.display='none';
+				document.getElementById('sulphurDiv').style.display='none';
+				document.getElementById('ammoniaDiv').style.display='none';
+			}
+		})()
+
+		const dropdownMenuButton = document.getElementById('dropdownMenuButton')
+		.addEventListener('click',(e)=>(showCard(e)));
+
+		const showCard = (event) =>{
+			const toggle = document.getElementById('displaycontent'); 
+			console.log(toggle)
+			if (toggle.style.display === "none") {
+				toggle.style.display = "block";
+			} 
+		}
+		const CloseFuction = (e) =>{
+			e.preventDefault()
+			document.getElementById('displaycontent').style.display = "none"
+			document.getElementById('fluorideDiv').style.display='none';
+			document.getElementById('sulphurDiv').style.display='none';
+			document.getElementById('ammoniaDiv').style.display='none';
+		}
+		const sulphurelement = (e) => {
+			const sulphurDiv = document.getElementById('sulphurDiv');
+			console.log("mkc");
+			console.log(sulphurDiv);
+			if (sulphurDiv.style.display === "none") {
+				sulphurDiv.style.display = "block";
+			} 
+			else {
+				sulphurDiv.style.display = "none";
+			}
+		}
+		const ammoniaelement = (e) => {
+			const ammoniaDiv = document.getElementById('ammoniaDiv');
+			console.log("mkc")
+			console.log(ammoniaDiv)
+			if (ammoniaDiv.style.display === "none") {
+				ammoniaDiv.style.display = "block";
+			} 
+			else {
+				ammoniaDiv.style.display = "none";
+			}
+		}
+		const fluronielement = (e) => {
+			const fluorideDiv = document.getElementById('fluorideDiv');
+			console.log("mkc")
+			console.log(fluorideDiv)
+			if (fluorideDiv.style.display === "none") {
+
+				fluorideDiv.style.display = "block";
+			} 
+			else {
+				fluorideDiv.style.display = "none";
+			}
+		}
+		const sulphur = document.querySelector('#sulphur');
+		const ammonia = document.querySelector('#ammonia');
+		const floride = document.querySelector('#floride');
+		const CrossButton = document.querySelector('#crossButton')
+
+		sulphur.addEventListener('click', sulphurelement);
+		ammonia.addEventListener('click', ammoniaelement);
+		floride.addEventListener('click', fluronielement);
+		CrossButton.addEventListener('click', (e)=>CloseFuction(e));
+
 		Circles.create({
-<<<<<<< Updated upstream
+
 			id:'circles-1',
 			radius:45,
 			value:45,
@@ -133,11 +322,17 @@
 			textClass:'circles-text',
 			styleWrapper:true,
 			styleText:true
-=======
+
 			id: 'circles-1',
 			radius: 55,
 			value: "{{ turbi}}",
 			maxValue: 1,
+
+			id: 'circles-1',
+			radius: 55,
+			value: "{{ turbi}}",
+			maxValue: 100,
+
 			width: 7,
 			text: "{{ turbi}}",
 			colors: ['#f1f1f2', '#FF9E27'],
@@ -146,32 +341,34 @@
 			textClass: 'circles-text',
 			styleWrapper: true,
 			styleText: true
->>>>>>> Stashed changes
+
 		})
 
 		Circles.create({
-			id:'circles-2',
-			radius:45,
-			value:70,
-			maxValue:100,
-			width:7,
-			text: 36,
-			colors:['#f1f1f1', '#2BB930'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
+			id: 'circles-2',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#2BB930'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
 		})
 
-<<<<<<< Updated upstream
-=======
+
 
 		Circles.create({
 			id: 'circles-3',
 			radius: 55,
 			value: "{{ ph }}",
+
 			maxValue: 14,
+
+			maxValue: 100,
 			width: 7,
 			text: "{{ ph }}",
 			colors: ['#f1f1f1', '#F25961'],
@@ -181,20 +378,48 @@
 			styleWrapper: true,
 			styleText: true
 		})
->>>>>>> Stashed changes
+
 		Circles.create({
-			id:'circles-3',
-			radius:45,
-			value:40,
-			maxValue:100,
-			width:7,
-			text: 12,
-			colors:['#f1f1f1', '#F25961'],
-			duration:400,
-			wrpClass:'circles-wrp',
-			textClass:'circles-text',
-			styleWrapper:true,
-			styleText:true
+			id: 'circles-4',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#2BB930'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
+		})
+		Circles.create({
+			id: 'circles-5',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#FF9E27'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
+		})
+		Circles.create({
+			id: 'circles-6',
+			radius: 55,
+			value: "{{ temp }}",
+			maxValue: 100,
+			width: 7,
+			text: "{{ temp }}",
+			colors: ['#f1f1f1', '#F25961'],
+			duration: 400,
+			wrpClass: 'circles-wrp',
+			textClass: 'circles-text',
+			styleWrapper: true,
+			styleText: true
 		})
 
 		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
@@ -203,7 +428,7 @@
 			type: 'bar',
 			data: {
 				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
-				datasets : [{
+				datasets: [{
 					label: "Total Income",
 					backgroundColor: '#ff9e27',
 					borderColor: 'rgb(23, 125, 255)',
@@ -221,22 +446,22 @@
 						ticks: {
 							display: false //this will remove only the label
 						},
-						gridLines : {
+						gridLines: {
 							drawBorder: false,
-							display : false
+							display: false
 						}
 					}],
-					xAxes : [ {
-						gridLines : {
+					xAxes: [{
+						gridLines: {
 							drawBorder: false,
-							display : false
+							display: false
 						}
 					}]
 				},
 			}
 		});
 
-		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+		$('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
 			type: 'line',
 			height: '70',
 			width: '100%',
@@ -244,6 +469,7 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
+
 	</script>
 
-{% endblock javascripts %}
+	{% endblock javascripts %}

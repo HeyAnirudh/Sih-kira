@@ -9,3 +9,5 @@ dj-database-url
 python-decouple
 gunicorn
 whitenoise
+pyrebase4
+firebase-admin

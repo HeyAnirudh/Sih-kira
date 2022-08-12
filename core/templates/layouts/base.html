@@ -30,8 +30,7 @@
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
 	<link rel="stylesheet" href="/static/assets/css/demo.css">
-<<<<<<< Updated upstream
-=======
+
 	<style>
 	body {
 		font-family: 'Montserrat', sans-serif;
@@ -55,7 +54,11 @@
 		height: 30px;
 		  background-color: #ee303c;  
 		border-radius: 4px; 
+
 		transition: 0.9s linear;  
+
+		transition: 0.4s linear;  
+
 		transition-property: width, background-color;    
 	  }
 	  
@@ -66,12 +69,20 @@
 		background-color: #FCBC51; 
 		width: var(--width); 
 		background-image: linear-gradient(
+
 			  45deg, rgb(204, 27, 27) 20%, 
 			  transparent 25%, transparent 40%, 
 			  rgb(252,163,17) 60%, rgb(252,163,17) 80%,
 			  rgb(252,163,17) 100%,
 			  transparent 75%, transparent);
 		animation: progressAnimationStrike 3s;
+
+			  45deg, rgb(252,163,17) 25%, 
+			  transparent 25%, transparent 50%, 
+			  rgb(252,163,17) 50%, rgb(252,163,17) 75%,
+			  transparent 75%, transparent); 
+		animation: progressAnimationStrike 6s;
+
 	  }
 	   
 	  @keyframes progressAnimationStrike {
@@ -80,7 +91,6 @@
 	  }
 	  </style>
 	  
->>>>>>> Stashed changes
 
     <!-- Specific Page CSS goes HERE  -->
     {% block stylesheets %}{% endblock stylesheets %}
