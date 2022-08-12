@@ -20,9 +20,6 @@ db = firestore.client()
 db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
 
-#cred = credentials.Certificate("C:\\Users\\Anirudh soni\\Desktop\\Firebase key\\hydrosense-2cc3a-firebase-adminsdk-bl3a8-0481c30fb9.json")
-
-
 config= {
   "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
   "authDomain": "hydrosense-2cc3a.firebaseapp.com",
@@ -70,6 +67,7 @@ def waterQuality():
     pH = 7
     turb = 0.22222
     temp = 22
+
     ans = (pH_Calc(pH) + turb_Calc(turb) + temp_Calc(temp))//3
 
     return ans
@@ -83,7 +81,16 @@ def index(request):
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
-    context["ans"] = 7
+    ph_cal=pH_Calc(context["ph"])
+    turb_cal= turb_Calc(context["turbi"])
+    temp_cal=temp_Calc(context["temp"])
+    if ph_cal < 5 or turb_cal < 6 or temp_cal < 5 :
+        context["ans"]=0
+    else:
+        context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
+
+
+    
 
     # print(context["temp"],context["ph"],context["turbi"],context["ans"])
     
@@ -95,6 +102,7 @@ def index(request):
 @login_required(login_url="/login/")
 def pages(request):
     context = {}
+    print(request.user.username)
     # All resource paths end in .html.
     # Pick out the html file name from the url. And load that template.
     try:
@@ -114,24 +122,12 @@ def pages(request):
     
         html_template = loader.get_template( 'page-500.html' )
         return HttpResponse(html_template.render(context, request))
-
-
-
-def ph(request):
-    return render(request,"information-pages\ph.html")
-
-def turbidity(request):
-    return render(request,"information-pages\turbidity.html")
-
-def temperature(request):
-    return render(request,"information-pages\temperature.html")
-
 @login_required(login_url="/login/")
 def singleLineChart(request):
 
     
     data = db.collection('testSensor').get()
-    print(data)
+    
     temperatureData = []
     phData=[]
     turbidityData=[]
@@ -143,9 +139,7 @@ def singleLineChart(request):
         temperatureData.append(temp)
         phData.append(ph)
         turbidityData.append(turb)
-    print(temperatureData)
-    print(phData)
-    print(turbidityData)
+    
     chartContext = {
         "temperatureData":temperatureData,
         "phData":phData,
@@ -153,4 +147,3 @@ def singleLineChart(request):
     }
     html_template = loader.get_template( 'charts.html' )
     return render(request ,'charts.html',chartContext)
-

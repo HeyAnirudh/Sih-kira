@@ -122,43 +122,40 @@
 	<script src="/static/assets/js/demo.js"></script>
 
 	<script>
-		var result ="{{ ans }}";
-	console.log(result);
-	  if(result >0 && result <=2)
-		{
-	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
-		  
-	  document.getElementById("text1").innerHTML = "{{ ans }}";
-	  }
-	  else if(result>2 &&result<=4)
-		{
-	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
-		  
-	  document.getElementById("text1").innerHTML = "{{ ans }}";
-		}
-		
-	  else if(result>4 &&result<=6)
-		{
-	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
-		  
-		  document.getElementById("text1").innerHTML = "{{ ans }}";
-		}
-		
-	   else if(result>6 &&result<=8)
-		{
-	  document.getElementById("ima").src="https://c.tenor.com/fo0KiI5mMtAAAAAi/dank-laugh.gif";
-		  document.getElementById("text1").innerHTML = "{{ ans }}";
-		}
-		
-	  else
-		{
-	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
-		  
-		  document.getElementById("text1").innerHTML = "{{ ans }}";
-		}
-
-	  </script>
-	  
+		var result = "{{ ans }}";
+		  if(result >0 && result <=20)
+			{
+		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
+			  
+		  document.getElementById("text1").innerHTML = "Undrinkable";
+		  }
+		  else if(result>20 &&result<=40)
+			{
+		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/sad-but-relieved-face_1f625.png";
+			  
+		  document.getElementById("text1").innerHTML = " Very Poor";
+			}
+			
+		  else if(result>40 &&result<=60)
+			{
+		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+			  
+			  document.getElementById("text1").innerHTML = "Poor";
+			}
+			
+		   else if(result>60 &&result<=80)
+			{
+		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/slightly-smiling-face_1f642.png";
+			  document.getElementById("text1").innerHTML = "Drinkable but not recommended";
+			}
+			
+			else if(result> 80)
+			{
+		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/grinning-face_1f600.png";
+			  
+			  document.getElementById("text1").innerHTML = "Drinkable";
+			}
+		  </script>
 
 	<!-- Specific Page JS goes HERE  -->
 	
