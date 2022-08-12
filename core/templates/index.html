@@ -100,6 +100,65 @@
 			</div>
 		</div>
 	</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+=======
+	<div class="container">    
+		<div class="progress progress-striped">
+		  <div class="progress-bar" style="--width: {{ans}}%; ">
+		  </div>                       
+		</div> 
+	  </div>
+	  
+	  <div id="key" class="container">    
+		<img id="ima">  
+		<h1 id="text1"> </h1>
+	  </div>
+	<script>
+	var result = "{{ ans }}";
+	  if(result >0 && result <=20)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
+		  
+	  document.getElementById("text1").innerHTML = "Undrinkable";
+	  }
+	  else if(result>20 &&result<=40)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/sad-but-relieved-face_1f625.png";
+		  
+	  document.getElementById("text1").innerHTML = " Very Poor";
+		}
+		
+	  else if(result>40 &&result<=60)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
+		  
+		  document.getElementById("text1").innerHTML = "Poor";
+		}
+		
+	   else if(result>60 &&result<=80)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/slightly-smiling-face_1f642.png";
+		  document.getElementById("text1").innerHTML = "Drinkable but not recommended";
+		}
+		
+		else if(result> 80)
+		{
+	  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/grinning-face_1f600.png";
+		  
+		  document.getElementById("text1").innerHTML = "Drinkable";
+		}
+	  </script>
+
+	{% endblock content %}
+
+	<!-- Specific Page JS goes HERE  -->
+	{% block javascripts %}
+
 	<div class="container">    
 		<div class="progress progress-striped">
 		  <div class="progress-bar" style="--width: {{ans}}%; ">
@@ -116,6 +175,7 @@
 
 	<!-- Specific Page JS goes HERE  -->
 	{% block javascripts %}
+
 
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/static/assets/js/setting-demo.js"></script>
@@ -249,10 +309,30 @@
 		CrossButton.addEventListener('click', (e)=>CloseFuction(e));
 
 		Circles.create({
+
+			id:'circles-1',
+			radius:45,
+			value:45,
+			maxValue:100,
+			width:7,
+			text: 100,
+			colors:['#f1f1f2', '#FF9E27'],
+			duration:1000,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+
+			id: 'circles-1',
+			radius: 55,
+			value: "{{ turbi}}",
+			maxValue: 1,
+
 			id: 'circles-1',
 			radius: 55,
 			value: "{{ turbi}}",
 			maxValue: 100,
+
 			width: 7,
 			text: "{{ turbi}}",
 			colors: ['#f1f1f2', '#FF9E27'],
@@ -261,6 +341,7 @@
 			textClass: 'circles-text',
 			styleWrapper: true,
 			styleText: true
+
 		})
 
 		Circles.create({
@@ -279,10 +360,14 @@
 		})
 
 
+
 		Circles.create({
 			id: 'circles-3',
 			radius: 55,
 			value: "{{ ph }}",
+
+			maxValue: 14,
+
 			maxValue: 100,
 			width: 7,
 			text: "{{ ph }}",
@@ -293,6 +378,7 @@
 			styleWrapper: true,
 			styleText: true
 		})
+
 		Circles.create({
 			id: 'circles-4',
 			radius: 55,
