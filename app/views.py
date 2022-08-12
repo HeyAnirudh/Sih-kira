@@ -9,7 +9,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
 from django.http import HttpResponse
 from django import template
-
 import pyrebase
 import firebase_admin
 from firebase_admin import credentials
@@ -20,6 +19,8 @@ firebase_admin.initialize_app(credJson)
 db = firestore.client()
 db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
+
+#cred = credentials.Certificate("C:\\Users\\Anirudh soni\\Desktop\\Firebase key\\hydrosense-2cc3a-firebase-adminsdk-bl3a8-0481c30fb9.json")
 
 
 config= {
@@ -69,11 +70,9 @@ def waterQuality():
     pH = 7
     turb = 0.22222
     temp = 22
-
     ans = (pH_Calc(pH) + turb_Calc(turb) + temp_Calc(temp))//3
 
     return ans
-
 
 
 @login_required(login_url="/login/")
@@ -81,31 +80,10 @@ def index(request):
 
     
     context = {}
-
-    context['segment'] = 'index'
-    context["temp"]='40'
-    context["ph"]='4'
-    context["turbi"]='50'
-
-    context["temp"]=database.child('Data').child('Temerature').get().val()
-    context["ph"]=database.child('Data').child('ph').get().val()
-    context["turbi"]=database.child('Data').child('Turbidity').get().val()
-    ph_cal=pH_Calc(context["ph"])
-    turb_cal= turb_Calc(context["turbi"])
-    temp_cal=temp_Calc(context["temp"])
-    if ph_cal < 5 or turb_cal < 6 or temp_cal < 5 :
-        context["ans"]=0
-    else:
-        context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
-
-
-    print(context['ans'])
-
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
     context["ans"] = 7
-
 
     # print(context["temp"],context["ph"],context["turbi"],context["ans"])
     
