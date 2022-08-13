@@ -35,11 +35,12 @@
 		font-family: 'Montserrat', sans-serif;
 	  
 	  }
-	  
+	
 	  .container {
 		margin: 100px auto;
 		width: 500px;
 		text-align: center;
+		box-shadow: #06d30d;
 	  }
 	  
 	  .progress {
@@ -51,7 +52,7 @@
 	  
 	  .progress-bar {	
 		height: 30px;
-		  background-color: #ee303c;  
+		background-color: #ee303c;  
 		border-radius: 4px; 
 		transition: 0.4s linear;  
 		transition-property: width, background-color;    
@@ -61,14 +62,9 @@
 		left:-6px;
 		position: relative;	
 		top: -15px;
-		background-color: #FCBC51; 
 		width: var(--width); 
-		background-image: linear-gradient(
-			  45deg, rgb(252,163,17) 25%, 
-			  transparent 25%, transparent 50%, 
-			  rgb(252,163,17) 50%, rgb(252,163,17) 75%,
-			  transparent 75%, transparent); 
-		animation: progressAnimationStrike 6s;
+		background: linear-gradient(to right, #ff012f 0%, #ffdb3a 45%, #06d30d 100%);
+		animation: progressAnimationStrike 3s;
 	  }
 	   
 	  @keyframes progressAnimationStrike {

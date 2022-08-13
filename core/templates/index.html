@@ -100,17 +100,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">    
-		<div class="progress progress-striped">
-		  <div class="progress-bar" style="--width: {{ans}}%; ">
-		  </div>                       
-		</div> 
-	  </div>
-	  
-	  <div id="key" class="container">    
-		<img id="ima">  
-		<h1 id="text1"> </h1>
-	  </div>
+	
+	<div class="container" >
+		<div>    
+			<div class="progress progress-striped">
+				<div class="progress-bar" style="--width: {{ans}}%; ">
+				</div>                       
+			</div> 
+		</div>
+		<br>
+		<br>
+		<div id="key" >    
+			<h5 id="text1" ></h5>
+			<br>
+			<img id="ima">  
+		</div>
+	</div>
 	
 	{% endblock content %}
 
@@ -127,33 +132,33 @@
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
 			  
-		  document.getElementById("text1").innerHTML = "Undrinkable";
+		  document.getElementById("text1").innerHTML =  "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Undrinkable";
 		  }
 		  else if(result>20 &&result<=40)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/sad-but-relieved-face_1f625.png";
 			  
-		  document.getElementById("text1").innerHTML = " Very Poor";
+		  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Very Poor";
 			}
 			
 		  else if(result>40 &&result<=60)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/neutral-face_1f610.png";
 			  
-			  document.getElementById("text1").innerHTML = "Poor";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Poor";
 			}
 			
 		   else if(result>60 &&result<=80)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/slightly-smiling-face_1f642.png";
-			  document.getElementById("text1").innerHTML = "Drinkable but not recommended";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Drinkable but not recommended";
 			}
 			
 			else if(result> 80)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/grinning-face_1f600.png";
 			  
-			  document.getElementById("text1").innerHTML = "Drinkable";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Drinkable";
 			}
 		  </script>
 
