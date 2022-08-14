@@ -4,6 +4,7 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+from asyncio.windows_events import NULL
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template import loader
@@ -18,6 +19,7 @@ credJson = credentials.Certificate("./app/ServiceAccountKey.json")
 firebase_admin.initialize_app(credJson)
 db = firestore.client()
 db.collection('test').document('testdoc').set({"name":"keshav","age":699})
+
 
 
 config= {
@@ -73,14 +75,41 @@ def waterQuality():
     return ans
 
 
-@login_required(login_url="/login/")
+
 def index(request):
+    email=request.POST.get("email")
+    passw = request.POST.get("pass")
+    print(email)
+    try:
+        user = auth.sign_in_with_email_and_password(email,passw)
+    except:
+        message = "invalid cerediantials"
+        return render(request,"nahi.html",{"msg":message})
+    session_id=user['idToken']
+    request.session['uid']=str(session_id)
+    # return render(request,"Home.html",{"email":email})
+   
 
     
     context = {}
     context["temp"]=database.child('Data').child('Temerature').get().val()
     context["ph"]=database.child('Data').child('ph').get().val()
     context["turbi"]=database.child('Data').child('Turbidity').get().val()
+    context["email"]=email
+    res=db.collection('Userdb').document(email).get()
+    if res.exists:
+
+        print(res.to_dict())
+        data=res.to_dict()
+
+    else:
+        print("not")
+    context["school_name"]=data["school_name"]
+
+
+    
+    
+
     ph_cal=pH_Calc(context["ph"])
     turb_cal= turb_Calc(context["turbi"])
     temp_cal=temp_Calc(context["temp"])
@@ -92,7 +121,7 @@ def index(request):
 
     
 
-    # print(context["temp"],context["ph"],context["turbi"],context["ans"])
+
     
     db.collection('testSensor').document().set(context)
     
@@ -147,3 +176,32 @@ def singleLineChart(request):
     }
     html_template = loader.get_template( 'charts.html' )
     return render(request ,'charts.html',chartContext)
+
+
+def trail(request):
+    return render(request,'login.html')
+
+
+def signup(request):
+    sch_name=request.POST.get("School_Name")
+    sch_id= request.POST.get("School_id")
+    email=request.POST.get("email")
+    passw = request.POST.get("password")
+    if sch_name != None or sch_id != None or email != None or passw!=None:
+        db.collection('Userdb').document(email).set({"school_name":sch_name,"school_id":sch_id,"email":email,"Password":passw})
+        print(sch_name)
+        print(sch_id)
+        print(email)
+        print(passw)
+
+        user=auth.create_user_with_email_and_password(email,passw)
+        uid = user['localId']
+        idtoken = request.session['uid']
+        print(uid)
+    
+    return render(request,"regis.html")
+    
+def landing(request):
+    return render(request,"landing.html")
+    
+
