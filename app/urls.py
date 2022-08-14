@@ -9,10 +9,15 @@ from app import views
 urlpatterns = [
 
     # The home page
-    path('', views.index, name='home'),
+    path('', views.landing, name='home'),
     path('chartsxddd/',views.singleLineChart,name='chart'),
+    
     # Matches any html file
-    re_path(r'^.*\.*', views.pages, name='pages'),
+    # re_path(r'^.*\.*', views.pages, name='pages'),
+    path('login/',views.trail, name="validate"),
+    path('postsign/',views.index, name="validate"),
+    path("register/",views.signup ,name="register"),
+    path("signup/",views.signup,name="registered")
 
     #ph
     # path('ph/',views.ph, name='ph')
