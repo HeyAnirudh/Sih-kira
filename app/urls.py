@@ -17,7 +17,8 @@ urlpatterns = [
     path('login/',views.trail, name="validate"),
     path('postsign/',views.index, name="validate"),
     path("register/",views.signup ,name="register"),
-    path("signup/",views.signup,name="registered")
+    path("signup/",views.signup,name="registered"),
+    path("ph/",views.ph,name="ph")
 
     #ph
     # path('ph/',views.ph, name='ph')

@@ -203,5 +203,8 @@ def signup(request):
     
 def landing(request):
     return render(request,"landing.html")
+
+def ph(request):
+    return render(request,"ph.html")
     
 
