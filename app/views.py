@@ -199,3 +199,9 @@ def landing(request):
 
 def ph(request):
     return render(request,"ph.html")
+
+def temperature(request):
+    return render(request,"temperature.html")
+
+def turbidity(request):
+    return render(request,"turbidity.html")

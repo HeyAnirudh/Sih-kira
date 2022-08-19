@@ -18,7 +18,10 @@ urlpatterns = [
     path('postsign/',views.index, name="validate"),
     path("register/",views.signup ,name="register"),
     path("signup/",views.signup,name="registered"),
-    path("ph/",views.ph,name="ph")
+    path("ph/",views.ph,name="ph"),
+    path("temperature/",views.temperature,name="temperature"),
+    path("turbidity/",views.turbidity,name="turbidity")
+
 
     #ph
     # path('ph/',views.ph, name='ph')

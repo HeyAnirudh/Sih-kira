@@ -3,60 +3,142 @@
 <!-- {% block title %} Dashboard {% endblock %}  -->
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+
+<link rel="stylesheets" href="..\static\assets\css\pages.css"
+{% endblock stylesheets %}
 
 {% block content %}
+<style>
+		/* Style the button that is used to open and close the collapsible content */
+	.collapsible-header {
+	color:#575962;
+	background-color: white;
+	display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    padding: 1rem;
+	border:1px solid #ddd;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	width:100%;
+	border-radius: 0.25em;
+}
 
-<div class="content">
-    <h1>pH (Potential of Hydrogen)</h1>
-    <div class = "row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Your pH value</div>
-                </div>
-                <div class="card-body">
-                    <div class="px-2 pb-2 pb-md-0 text-center">
-                        <div id="circles-3"></div>
-                        <h6 class="fw-bold mt-3 mb-0">pH</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Line Chart</div>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="lineChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+	.active, .collapsible-header:hover {
+	background-color: #ccc;
+	}
+
+	.collapsible-body {
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	  padding: 0 18px;
+	  background-color: white;
+	  max-height: 0;
+	  overflow: hidden;
+	  transition: max-height 0.2s ease-out;
+	}
+	</style>
+<div class="content" style="align:center;"">
+		
+		<div class="card" style="align:center;font-family: 'Montserrat', sans-serif; width:85em; margin-left: auto;margin-right: auto;">
+			<div class="card-header">
+				<div class="card-title" style="text-align: center;font-weight: bold; font-size:2.5em">Turbidity</div>
+			</div>
+
+			<div class="card-body">
+				<div class = "row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Your turbidity value</div>
+							</div>
+							<div class="card-body">
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-1"></div>
+									<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Line Chart</div>
+							</div>
+							<div class="card-body">
+								<div class="chart-container">
+									<canvas id="lineChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		
+				<div class="collapsible">
+
+
+				
+					
+						<button type="button" class="collapsible-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<h2><span><strong>1. What is turbidity?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body" id="collapseOne">
+								<p style="text-align: justify;" id="paragraph"><span>Turbidity is a cloudiness or haziness of water (or other liquid) caused by individual particles that are too small to be seen without magnification, thus being much like smoke in air. Liquids can contain suspended solid matter consisting of particles of many different sizes (see suspended solids). While some suspended material will be large enough and heavy enough to settle rapidly to the bottom of a container if a liquid sample is left to stand (the settleable solids), very small particles will settle only very slowly or not at all if the sample is regularly agitated or the particles are colloidal. These small solid particles cause the liquid to appear turbid. Measurement of turbidity is a key test of water quality.
+									</span></p>
+								<p style="text-align: justify;"></p>
+						</div>
+					
+					
+						<button type="button" class="collapsible-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<h2><span><strong>2. How to measure turbidity?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body" id="collapseTwo">
+							<p>There are many methods to measure turbidity. As a measurement of how cloudy water is, we can use everything from visual methods to full-scale meters to quantify it.
+
+								Some visual methods are ideal for quick field environmental use, such as the Secchi disk. This consists of a disk that is lowered into water until it's no longer visible. The depth at which the disk is not visible is the Secchi depth. This method is subjective and works best in slow-moving, low turbidity natural waters.
+								
+								The best way to measure turbidity in a wide variety of samples is with a nephelometer, also known as a turbidity meter. Turbidity meters utilize a light and photo detector to measure light scatter, and read out in units of turbidity, such as nephelometric turbidity units (NTU) or formazin turbidity units (FTU)
+								</p>
+						</div>
+				
+					
+						<button type="button" class="collapsible-header">	
+							<h2><span><strong>3. How does it determine water quality?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body">
+							<p >
+								</p>
+							<div align=center>
+								<p><img src="../static/assets/img/turbidity.jpg" width=80% style="align:center; margin-left: auto;margin-right: auto;"></p>
+								<p><span></span></p>
+								<br>
+							</div>
+						</div>
+					
+					
+						<button type="button" class="collapsible-header">
+							<h2 ><span><strong>4. Turbidity tutorial</strong></span><span></span></h2>
+						</button>	
+						<div class="collapsible-body" align=center style="margin-top:5%">
+							<iframe src="..\static\assets\img\Water turbidity - Dangers of cloudy river and drinking water.mp4"
+								style="align:center; margin-left: auto;margin-right: auto;" height=600px width=80%
+									allowfullscreen>
+									</iframe> 
+						</div>
+						
+					
+					</div>
+				
+				<p>Information courtesy of <a href="https://www3.epa.gov/acidrain/education/site_students/phscale.html">U.S. Environmental Protection Agency</a></p>
+
+		</div>
+
 </div>
-<div class="cannamed-single-article-content">
-    <div id="ez-toc-container" class="ez-toc-v2_0_26 counter-hierarchy counter-decimal ez-toc-grey">
- <span style="font-family:'times new roman', times, serif; color: #000000; font-size: 20px;"><strong>1. What is pH?</strong></span><span class="ez-toc-section-end"></span></h2>
-    <p style="text-align: justify;"><span style="font-weight: 400; font-family:'times new roman', times, serif; color: #000000;">pH stands for the concept of “<strong><em>potential of hydrogen</em></strong>” which is an indicator indicating the activity of H+ ions in solution (also known as pH), an index with a scale from 1 to 14. It reflects properties alkaline or acidic of a certain environment to know if that concentration will be beneficial or harmful to plants.</span></p>
-    <p style="text-align: justify;"></p></div>
-
-    <div id="ez-toc-container" class="ez-toc-v2_0_26 counter-hierarchy counter-decimal ez-toc-grey">
-        <span style="font-family:'times new roman', times, serif; color: #000000; font-size: 20px;"><strong>1. How o measure pH?</strong></span><span class="ez-toc-section-end"></span></h2>
-        <div class="tex2jax_process" bis_skin_checked="1"><p><strong>Acid Rain and the pH Scale</strong></p>
-            <p>The pH scale measures how acidic an object is. Objects that are not very acidic are called basic. The scale has values ranging from zero (the most acidic) to 14 (the most basic). As you can see from the pH scale above, pure water has a pH value of 7. This value is considered neutral—neither acidic or basic. Normal, clean rain has a pH value of between 5.0 and 5.5, which is slightly acidic. However, when rain combines with sulfur dioxide or nitrogen oxides—produced from power plants and automobiles—the rain becomes much more acidic. Typical acid rain has a pH value of 4.0. A decrease in pH values from 5.0 to 4.0 means that the acidity is 10 times greater.</p>
-            <p><strong>How pH is Measured</strong></p>
-            <p>There are many high-tech devices that are used to measure pH in laboratories. One easy way that you can measure pH is with a strip of&nbsp;<a href="https://www3.epa.gov/acidrain/education/site_students/glossary.html#lit">litmus paper</a>. When you touch a strip of litmus paper to something, the paper changes color depending on whether the substance is acidic or basic. If the paper turns red, the substance is acidic, and if it turns blue, the substance is basic.</p>
-            <p>Information courtesy of <a href="https://www3.epa.gov/acidrain/education/site_students/phscale.html">U.S. Environmental Protection Agency</a></p>
-            </div></div>
-    <p><img src="https://blog.jencoi.com/hs-fs/hubfs/103211917_m.jpg?width=1200&name=103211917_m.jpg"></p>
-    <iframe src="https://phet.colorado.edu/sims/html/ph-scale-basics/latest/ph-scale-basics_en.html"
-        width="800"
-        height="600"
-        allowfullscreen>
-</iframe>
-    </div>
 {% endblock content %}
 
 
@@ -125,6 +207,36 @@
 			styleWrapper: true,
 			styleText: true
 		})
+
+		var coll = document.getElementsByClassName("collapsible-header");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+				content.style.display = "none";
+				} else {
+				content.style.display = "block";
+				}
+			});
+			}
+			var coll = document.getElementsByClassName("collapsible-header");
+			var i;
+			
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight){
+				  content.style.maxHeight = null;
+				} else {
+				  content.style.maxHeight = content.scrollHeight + "px";
+				}
+			  });
+			}
+
     </script>
     {% endblock javascripts %}
 

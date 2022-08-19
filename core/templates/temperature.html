@@ -3,60 +3,141 @@
 <!-- {% block title %} Dashboard {% endblock %}  -->
 
 <!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+
+<link rel="stylesheets" href="..\static\assets\css\pages.css"
+{% endblock stylesheets %}
 
 {% block content %}
+<style>
+		/* Style the button that is used to open and close the collapsible content */
+	.collapsible-header {
+	color:#575962;
+	background-color: white;
+	display: flex;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    line-height: 1.5;
+    padding: 1rem;
+	border:1px solid #ddd;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	width:100%;
+	border-radius: 0.25em;
+}
 
-<div class="content">
-    <h1>pH (Potential of Hydrogen)</h1>
-    <div class = "row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Your pH value</div>
-                </div>
-                <div class="card-body">
-                    <div class="px-2 pb-2 pb-md-0 text-center">
-                        <div id="circles-3"></div>
-                        <h6 class="fw-bold mt-3 mb-0">pH</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">Line Chart</div>
-            </div>
-            <div class="card-body">
-                <div class="chart-container">
-                    <canvas id="lineChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+	/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+	.active, .collapsible-header:hover {
+	background-color: #ccc;
+	}
+
+	.collapsible-body {
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	  padding: 0 18px;
+	  background-color: white;
+	  max-height: 0;
+	  overflow: hidden;
+	  transition: max-height 0.2s ease-out;
+	}
+	</style>
+<div class="content" style="align:center;"">
+		
+		<div class="card" style="align:center;font-family: 'Montserrat', sans-serif; width:85em; margin-left: auto;margin-right: auto;">
+			<div class="card-header">
+				<div class="card-title" style="text-align: center;font-weight: bold; font-size:2.5em">Temperature</div>
+			</div>
+
+			<div class="card-body">
+				<div class = "row">
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Your temperature value</div>
+							</div>
+							<div class="card-body">
+								<div class="px-2 pb-2 pb-md-0 text-center">
+									<div id="circles-2"></div>
+									<h6 class="fw-bold mt-3 mb-0">Temperature</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Line Chart</div>
+							</div>
+							<div class="card-body">
+								<div class="chart-container">
+									<canvas id="lineChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+		
+				<div class="collapsible">
+
+
+				
+					
+						<button type="button" class="collapsible-header" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<h2><span><strong>1. What is temperature?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body" id="collapseOne">
+								<p style="text-align: justify;" id="paragraph"><span>Temperature, measure of hotness or coldness expressed in terms of any of several arbitrary scales and indicating the direction in which heat energy will spontaneously flow—i.e., from a hotter body (one at a higher temperature) to a colder body (one at a lower temperature). Temperature is not the equivalent of the energy of a thermodynamic system; e.g., a burning match is at a much higher temperature than an iceberg, but the total heat energy contained in an iceberg is much greater than the energy contained in a match. Temperature, similar to pressure or density, is called an intensive property—one that is independent of the quantity of matter being considered—as distinguished from extensive properties, such as mass or volume.
+
+									Three temperature scales are in general use today. The Fahrenheit (°F) temperature scale is used in the United States and a few other English-speaking countries. The Celsius (°C) temperature scale is standard in virtually all countries that have adopted the metric system of measurement, and it is widely used in the sciences. The Kelvin (K) scale, an absolute temperature scale (obtained by shifting the Celsius scale by −273.15° so that absolute zero coincides with 0 K), is recognized as the international standard for scientific temperature measurement.
+									</span></p>
+								<p style="text-align: justify;"></p>
+						</div>
+					
+					
+						<button type="button" class="collapsible-header" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							<h2><span><strong>2. How to measure temperature?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body" id="collapseTwo">
+							<p>Three temperature scales are in general use today. The Fahrenheit (°F) temperature scale is used in the United States and a few other English-speaking countries. The Celsius (°C) temperature scale is standard in virtually all countries that have adopted the metric system of measurement, and it is widely used in the sciences. The Kelvin (K) scale, an absolute temperature scale (obtained by shifting the Celsius scale by −273.15° so that absolute zero coincides with 0 K), is recognized as the international standard for scientific temperature measurement.</p>
+						</div>
+				
+					
+						<button type="button" class="collapsible-header">	
+							<h2><span><strong>3. How does it determine water quality?</strong></span><span></span></h2>
+						</button>
+						<div class="collapsible-body">
+							<p >Why we monitor water temperature: Water temperature influences the rates of chemical and biological processes and affects other measured parameters (e.g. as temperature increases, the maximum amount of dissolved oxygen decreases). Water temperature is one of the most important parameters for aquatic organisms. Many animals have adapted to a specific range of temperatures and temperatures warmer than these can cause stress or even death. For example, trout are cold water fish that have trouble surviving when the water temperature is above 20 °C.
+ 
+								What influences water temperature: Water temperature is determined by the climate of the watershed, seasonal patterns and local influences. During the summer, lakes and reservoirs generally have a layer of warm and less dense water that floats above colder, denser water at the bottom of the reservoir. The density difference between these two layers creates a surprising amount of resistance to mixing, so the two layers stay separate for much of the summer. In the fall, the temperatures cool at the surface and the lake eventually mixes from top to bottom. A winter lake, especially one with ice cover, may have “reverse stratification” where slightly warmer water floats above the most dense water, which occurs at about 4.5 °C. In the spring, the lake mixes from top to bottom. The warming of the late spring and summer sun creates the warm later again.
+								 
+								Local influences on lake temperatures include upstream discharges of warmer water from natural springs or cooling water from power plants, shading provided by the littoral zone (the vegetation along the edge of the lake), lake depth, and the amount of suspended material in the water. recording the temperature.
+								</p>
+							<div align=center>
+								<p><img src="../static/assets/img/temperature.jpg"" width=80% style="align:center; margin-left: auto;margin-right: auto;"></p>
+								<p><span></span></p>
+								<br>
+							</div>
+						</div>
+					
+					
+						<button type="button" class="collapsible-header">
+							<h2 ><span><strong>4. Temperature simulator</strong></span><span></span></h2>
+						</button>	
+						<div style="border: 2px solid #D5CC5A; overflow: hidden; margin: 15px auto; max-width: 575px;">
+							<iframe scrolling="no" src="https://javalab.org/en/thermometer_en/" style="border: 0px none; height: 500px; width: 650px;">
+							</iframe>
+						</div>
+						
+					
+					</div>
+				
+				<p>Information courtesy of <a href="https://www3.epa.gov/acidrain/education/site_students/phscale.html">U.S. Environmental Protection Agency</a></p>
+
+		</div>
+
 </div>
-<div class="cannamed-single-article-content">
-    <div id="ez-toc-container" class="ez-toc-v2_0_26 counter-hierarchy counter-decimal ez-toc-grey">
- <span style="font-family:'times new roman', times, serif; color: #000000; font-size: 20px;"><strong>1. What is pH?</strong></span><span class="ez-toc-section-end"></span></h2>
-    <p style="text-align: justify;"><span style="font-weight: 400; font-family:'times new roman', times, serif; color: #000000;">pH stands for the concept of “<strong><em>potential of hydrogen</em></strong>” which is an indicator indicating the activity of H+ ions in solution (also known as pH), an index with a scale from 1 to 14. It reflects properties alkaline or acidic of a certain environment to know if that concentration will be beneficial or harmful to plants.</span></p>
-    <p style="text-align: justify;"></p></div>
-
-    <div id="ez-toc-container" class="ez-toc-v2_0_26 counter-hierarchy counter-decimal ez-toc-grey">
-        <span style="font-family:'times new roman', times, serif; color: #000000; font-size: 20px;"><strong>1. How o measure pH?</strong></span><span class="ez-toc-section-end"></span></h2>
-        <div class="tex2jax_process" bis_skin_checked="1"><p><strong>Acid Rain and the pH Scale</strong></p>
-            <p>The pH scale measures how acidic an object is. Objects that are not very acidic are called basic. The scale has values ranging from zero (the most acidic) to 14 (the most basic). As you can see from the pH scale above, pure water has a pH value of 7. This value is considered neutral—neither acidic or basic. Normal, clean rain has a pH value of between 5.0 and 5.5, which is slightly acidic. However, when rain combines with sulfur dioxide or nitrogen oxides—produced from power plants and automobiles—the rain becomes much more acidic. Typical acid rain has a pH value of 4.0. A decrease in pH values from 5.0 to 4.0 means that the acidity is 10 times greater.</p>
-            <p><strong>How pH is Measured</strong></p>
-            <p>There are many high-tech devices that are used to measure pH in laboratories. One easy way that you can measure pH is with a strip of&nbsp;<a href="https://www3.epa.gov/acidrain/education/site_students/glossary.html#lit">litmus paper</a>. When you touch a strip of litmus paper to something, the paper changes color depending on whether the substance is acidic or basic. If the paper turns red, the substance is acidic, and if it turns blue, the substance is basic.</p>
-            <p>Information courtesy of <a href="https://www3.epa.gov/acidrain/education/site_students/phscale.html">U.S. Environmental Protection Agency</a></p>
-            </div></div>
-    <p><img src="https://blog.jencoi.com/hs-fs/hubfs/103211917_m.jpg?width=1200&name=103211917_m.jpg"></p>
-    <iframe src="https://phet.colorado.edu/sims/html/ph-scale-basics/latest/ph-scale-basics_en.html"
-        width="800"
-        height="600"
-        allowfullscreen>
-</iframe>
-    </div>
 {% endblock content %}
 
 
@@ -125,6 +206,36 @@
 			styleWrapper: true,
 			styleText: true
 		})
+
+		var coll = document.getElementsByClassName("collapsible-header");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+				content.style.display = "none";
+				} else {
+				content.style.display = "block";
+				}
+			});
+			}
+			var coll = document.getElementsByClassName("collapsible-header");
+			var i;
+			
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight){
+				  content.style.maxHeight = null;
+				} else {
+				  content.style.maxHeight = content.scrollHeight + "px";
+				}
+			  });
+			}
+
     </script>
     {% endblock javascripts %}
 
