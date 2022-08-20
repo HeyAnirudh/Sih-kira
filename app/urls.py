@@ -18,5 +18,6 @@ urlpatterns = [
     path("ph/",views.ph,name="ph"),
     path("temperature/",views.temperature,name="temperature"),
     path("turbidity/",views.turbidity,name="turbidity"),
-    path("admin-main/",views.admin_main,name="admin-main")
+    path("admin-main/",views.admin_main,name="admin-main"),
+     path("download/",views.export,name="download")
 ]

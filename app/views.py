@@ -9,7 +9,7 @@ import pyrebase
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-
+import csv
 #firestore intitializations
 credJson = credentials.Certificate("./app/ServiceAccountKey.json")
 firebase_admin.initialize_app(credJson)
@@ -196,7 +196,9 @@ def signup(request):
 
 
 def admin_main(request):
-    return render(request,"admin-main.html")
+    data = db.collection('Userdb').get()
+    message={"total":len(data)}
+    return render(request,"admin-main.html",message)
     
 def landing(request):
     return render(request,"landing.html")
@@ -209,3 +211,60 @@ def temperature(request):
 
 def turbidity(request):
     return render(request,"turbidity.html")
+
+def export(request):
+    data = db.collection('testSensor').get()
+    
+    # temperatureData = []
+    # phData=[]
+    # turbidityData=[]
+    # for doc in data:
+    #     a= doc.to_dict()
+    #     temp=a['temp']
+    #     ph=a['ph']
+    #     turb=a['turbi']
+    #     temperatureData.append(temp)
+    #     phData.append(ph)
+    #     turbidityData.append(turb)
+    
+    # chartContext = {
+    #     "temperatureData":temperatureData,
+    #     "phData":phData,
+    #     "turbidityData":turbidityData
+    # }
+
+    response = HttpResponse(content_type='text/csv')
+
+    writer = csv.writer(response)
+    writer.writerow(['Temperature', 'pH', 'Turbidity'])
+    # a= doc.to_dict()
+    # for doc in a:
+    #     writer.writerow(a['temp'])
+    #     writer.writerow(a['ph'])
+    #     writer.writerow(a['turbi'])
+    temperatureData = []
+    phData=[]
+    turbidityData=[]
+    for doc in data:
+        a= doc.to_dict()
+        temp=a['temp']
+        ph=a['ph']
+        turb=a['turbi']
+        temperatureData.append(temp)
+        phData.append(ph)
+        turbidityData.append(turb)
+    writer.writerow(temperatureData)
+    writer.writerow(phData)
+    writer.writerow(turbidityData)
+    chartContext = {
+        "temperatureData":temperatureData,
+        "phData":phData,
+        "turbidityData":turbidityData
+    }
+
+    # for member in Member.objects.all().values_list('temperatureData', 'phData', 'turbidityData'):
+    #     writer.writerow(member)
+
+    response['Content-Disposition'] = 'attachment; filename="members.csv"'
+
+    return response
