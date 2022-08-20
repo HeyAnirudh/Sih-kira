@@ -11,19 +11,12 @@ urlpatterns = [
     # The home page
     path('', views.landing, name='home'),
     path('chartsxddd/',views.singleLineChart,name='chart'),
-    
-    # Matches any html file
-    # re_path(r'^.*\.*', views.pages, name='pages'),
     path('login/',views.trail, name="validate"),
     path('postsign/',views.index, name="validate"),
     path("register/",views.signup ,name="register"),
     path("signup/",views.signup,name="registered"),
     path("ph/",views.ph,name="ph"),
     path("temperature/",views.temperature,name="temperature"),
-    path("turbidity/",views.turbidity,name="turbidity")
-
-
-    #ph
-    # path('ph/',views.ph, name='ph')
-
+    path("turbidity/",views.turbidity,name="turbidity"),
+    path("admin-main/",views.admin_main,name="admin-main")
 ]

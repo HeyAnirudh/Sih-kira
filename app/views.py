@@ -193,6 +193,10 @@ def signup(request):
         else:
             message["messages"] = 2
     return render(request,"regis.html",message)
+
+
+def admin_main(request):
+    return render(request,"admin-main.html")
     
 def landing(request):
     return render(request,"landing.html")
