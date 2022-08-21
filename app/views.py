@@ -106,7 +106,7 @@ def index(request):
         context["ans"]=0
     else:
         context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
-
+    print(context["ans"])
     db.collection('testSensor').document().set(context)
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))

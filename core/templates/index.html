@@ -100,13 +100,39 @@
 			</div>
 		</div>
 	</div>
-	
+	<!-- progress bar -->
 	<div class="container" >
 		<div>    
+			{% if ans >= 0 and ans <= 20 %}
 			<div class="progress progress-striped">
-				<div class="progress-bar" style="--width: {{ans}}%; ">
+				<div class="progress-bar1" style="--width: {{ans}}%; ">
 				</div>                       
 			</div> 
+
+			{% elif ans > 20 and ans <= 40 %}
+			<div class="progress progress-striped">
+				<div class="progress-bar2" style="--width: {{ans}}%; ">
+				</div>                       
+			</div> 
+
+			{% elif ans > 40 and ans <= 60 %}
+			<div class="progress progress-striped">
+				<div class="progress-bar3" style="--width: {{ans}}%; ">
+				</div>                       
+			</div> 
+
+			{% elif ans > 60 and ans <= 80 %}
+			<div class="progress progress-striped">
+				<div class="progress-bar4" style="--width: {{ans}}%; ">
+				</div>                       
+			</div> 
+
+			{% else %}
+			<div class="progress progress-striped">
+				<div class="progress-bar5" style="--width: {{ans}}%; ">
+				</div>                       
+			</div> 
+			{% endif %}
 		</div>
 		<br>
 		<br>
@@ -128,7 +154,7 @@
 
 	<script>
 		var result = "{{ ans }}";
-		  if(result >0 && result <=20)
+		  if(result >= 0 && result <20)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
 			  
@@ -151,10 +177,10 @@
 		   else if(result>60 &&result<=80)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/slightly-smiling-face_1f642.png";
-			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Drinkable but not recommended";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Not recommended";
 			}
 			
-			else if(result> 80)
+			else if(result > 81 && result <= 100)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/grinning-face_1f600.png";
 			  
