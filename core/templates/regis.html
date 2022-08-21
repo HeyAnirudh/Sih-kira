@@ -13,7 +13,7 @@
 <style>
 body {
 	color: #fff;
-	background: rgb(255, 255, 255);
+	background: rgb(189, 189, 189);
 	font-family: 'Roboto', sans-serif;
 }
 .form-control {
@@ -102,8 +102,34 @@ body {
 </style>
 </head>
 <body>
+	
 <div class="signup-form">
-    <form action="/signup/" method="post">
+	{% if messages == 2 %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>Email id already exists</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+				
+
+			{% elif messages == 1  %}
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>User Sucessfully created</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>	
+			
+			{% else %}
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+				<strong>Enter Details</strong> 
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>	
+			{% endif %}
+    <form name="form1" action="/signup/" method="post">
 		{% csrf_token %}
 		<h2>School Register</h2>
 		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
@@ -114,20 +140,83 @@ body {
 			</div>        	
         </div>
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required" autocomplete="off">
+        	<input id="email" type="email" class="form-control" name="email" placeholder="Email" required="required" autocomplete="off">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required" autocomplete="off">
+            <input id="password" type="password" class="form-control" name="password" placeholder="Password" required="required" autocomplete="off">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required" autocomplete="off">
+            <input id="confirm_password" type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required" autocomplete="off">
 			<p style="font-size:10px; color:grey">*Password must be atleast 6 characters and including 1 special character</p>
         </div>        
 		<div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Register Now</button>
+
+            <button onclick="validation()" type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+
+			
         </div>
     </form>
-	<div class="text-center">Already have an account? <a href="/postsign/">Sign in</a></div>
+	<div class="text-center">Already have an account? <a href="/">Sign in</a></div>
 </div>
 </body>
+<script>
+
+	function validation()
+	{
+		if(document.getElementById("password").value !== document.getElementById("confirm_password").value )
+		{
+			alert("Passwords did not match !")
+			return false
+		}
+		if (/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/.test(myForm.emailAddr.value)!=true)
+			{
+    		alert("You have entered an invalid email address!")
+    		return (false)
+			}
+		return true
+
+	}
+
+
+	function validate_email(field,alerttxt)
+	{	
+    with (field)
+    {
+
+        apos=value.indexOf("@");
+        dotpos=value.lastIndexOf(".");
+        if (apos<1||dotpos-apos<2){
+            alert(alerttxt);return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+}
+function validatePassword(fld) {
+    var error = "";
+    var illegalChars = /[\W_]/; // allow only letters and numbers
+    if (fld.value == "") {
+        fld.style.background = 'Yellow';
+        error = "You didn't enter a password.\n";
+        alert(error);
+        return false;
+    } else if ((fld.value.length < 7) || (fld.value.length > 15)) {
+        error = "The password is the wrong length. \n";
+        fld.style.background = 'Yellow';
+        alert(error);
+        return false;
+    } else if (illegalChars.test(fld.value)) {
+        error = "The password contains illegal characters.\n";
+        fld.style.background = 'Yellow';
+        alert(error);
+        return false;
+    } else {
+        fld.style.background = 'White';
+    }
+   return true;
+}
+
+</script>
 </html>

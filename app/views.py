@@ -69,7 +69,7 @@ def waterQuality():
     return ans
 
 
-
+@login_required(login_url="/login/")
 def index(request):
     # login starts
     email=request.POST.get("email")
@@ -182,10 +182,6 @@ def signup(request):
         print(email_ids)
         if email not in email_ids:    
             db.collection('Userdb').document(email).set({"school_name":sch_name,"school_id":sch_id,"email":email,"Password":passw})
-            print(sch_name)
-            print(sch_id)
-            print(email)
-            print(passw)
             user=auth.create_user_with_email_and_password(email,passw)
             uid = user['localId']
             idtoken = request.session['uid']
@@ -202,7 +198,8 @@ def admin_main(request):
     
 def landing(request):
     return render(request,"landing.html")
-
+    
+@login_required(login_url="/login/")
 def ph(request):
     return render(request,"ph.html")
 
