@@ -209,6 +209,12 @@ def temperature(request):
 def turbidity(request):
     return render(request,"turbidity.html")
 
+def testing(request):
+    return render(request,"testing.html")
+
+def register_test(request):
+    return render(request,"register_test.html")
+
 def export(request):
     data = db.collection('testSensor').get()
     
