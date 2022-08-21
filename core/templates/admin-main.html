@@ -114,10 +114,10 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">School name</label>
                       <select class="form-control" id="school">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                        {% for myData in  school_name %}
+                        <option>{{ myData }} </option>
+                            
+                      {% endfor %}
                       </select>                    
                     </div>
                     <div class="form-group">

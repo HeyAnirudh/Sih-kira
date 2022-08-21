@@ -82,6 +82,7 @@ def index(request):
         return render(request,"nahi.html",{"msg":message})
     session_id=user['idToken']
     request.session['uid']=str(session_id)
+
     #login ends
 
     context = {}
@@ -193,12 +194,20 @@ def signup(request):
 
 def admin_main(request):
     data = db.collection('Userdb').get()
+    print(data)
+    school_name = []
+    for doc in data:
+        a= doc.to_dict()
+        school_name.append(a["school_name"])
+
     message={"total":len(data)}
+    message["school_name"]=school_name
+    print(message["school_name"])
     return render(request,"admin-main.html",message)
     
 def landing(request):
     return render(request,"landing.html")
-    
+
 @login_required(login_url="/login/")
 def ph(request):
     return render(request,"ph.html")
