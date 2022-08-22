@@ -154,7 +154,7 @@
 
 	<script>
 		var result = "{{ ans }}";
-		  if(result >= 0 && result <20)
+		  if(result >= 0 && result <=20)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/loudly-crying-face_1f62d.png";
 			  
@@ -177,14 +177,14 @@
 		   else if(result>60 &&result<=80)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/slightly-smiling-face_1f642.png";
-			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Not recommended";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Drinkable ";
 			}
 			
 			else if(result > 81 && result <= 100)
 			{
 		  document.getElementById("ima").src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/facebook/327/grinning-face_1f600.png";
 			  
-			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Drinkable";
+			  document.getElementById("text1").innerHTML = "PURITY : "+result+"%"+ '&nbsp &nbsp ' +"&"+ '&nbsp &nbsp ' +"STATUS : Clean and Drinkable";
 			}
 		  </script>
 

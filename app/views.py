@@ -102,10 +102,10 @@ def index(request):
     ph_cal=pH_Calc(context["ph"])
     turb_cal= turb_Calc(context["turbi"])
     temp_cal=temp_Calc(context["temp"])
-    if ph_cal < 5 or turb_cal < 6 or temp_cal < 5 :
-        context["ans"]=0
-    else:
-        context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
+    # if ph_cal < 5 or turb_cal < 5 or temp_cal < 3 :
+    # context["ans"]=10
+    # else:
+    context["ans"] = ((pH_Calc(context["ph"]) + turb_Calc(context["turbi"]) + temp_Calc(context["temp"]))//3)*10
     print(context["ans"])
     db.collection('testSensor').document().set(context)
     html_template = loader.get_template( 'index.html' )
