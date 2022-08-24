@@ -11,7 +11,7 @@ urlpatterns = [
     # The home page
     path('', views.landing, name='home'),
     path('chartsxddd/',views.singleLineChart,name='chart'),
-    path('login/',views.trail, name="validate"),
+    path('login/',views.trail, name="login"),
     path('postsign/',views.index, name="validate"),
     path("register/",views.signup ,name="register"),
     path("signup/",views.signup,name="registered"),
