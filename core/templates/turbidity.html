@@ -58,7 +58,7 @@
 							</div>
 							<div class="card-body">
 								<div class="px-2 pb-2 pb-md-0 text-center">
-									<div id="circles-1"></div>
+									<div id="circles-3"></div>
 									<h6 class="fw-bold mt-3 mb-0">Turbidity</h6>
 								</div>
 							</div>
@@ -147,11 +147,22 @@
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="/static/assets/js/setting-demo2.js"></script>
 	<script>
+		const data = "{{ turbidityData }}"
+		console.log("{{ turbidityData }}")
+		console.log(data)
+		console.log(typeof data)
+		var tuarray = JSON.parse("[" + data + "]");
+		console.log(tuarray)
+		console.log(tuarray[0])
+		const len = tuarray[0].length
+		console.log(len)
 		var lineChart = document.getElementById('lineChart').getContext('2d')
         var myLineChart = new Chart(lineChart, {
 			type: 'line',
 			data: {
-				labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+				labels: tuarray[0].map((ele,index)=>{
+					return index+1;
+				}),
 				datasets: [{
 					label: "Active Users",
 					borderColor: "#1d7af3",
@@ -164,7 +175,7 @@
 					backgroundColor: 'transparent',
 					fill: true,
 					borderWidth: 2,
-					data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 900]
+					data: tuarray[0]
 				}]
 			},
 			options : {
@@ -196,10 +207,10 @@
         Circles.create({
 			id: 'circles-3',
 			radius: 55,
-			value: "{{ ph }}",
-			maxValue: 100,
+			value: "{{ realTimeTurbidity }}",
+			maxValue: 1,
 			width: 7,
-			text: "{{ ph }}",
+			text: "{{ realTimeTurbidity }}",
 			colors: ['#f1f1f1', '#F25961'],
 			duration: 400,
 			wrpClass: 'circles-wrp',
@@ -239,4 +250,3 @@
 
     </script>
     {% endblock javascripts %}
-

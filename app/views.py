@@ -210,13 +210,86 @@ def landing(request):
 
 @login_required(login_url="/login/")
 def ph(request):
-    return render(request,"ph.html")
+    data = db.collection('testSensor').get()
+    temperatureData = []
+    phData=[]
+    turbidityData=[]
+    for doc in data:
+        a= doc.to_dict()
+        temp=a['temp']
+        ph=a['ph']
+        turb=a['turbi']
+        temperatureData.append(temp)
+        phData.append(ph)
+        turbidityData.append(turb)
+    realTimePh = database.child('Data').child('ph').get().val()
+    chartContext = {
+        "temperatureData":temperatureData,
+        "phData":phData,
+        "turbidityData":turbidityData,
+        "realTimePh":realTimePh
+    }
+    print("ph")
+    print(realTimePh)
+    print(chartContext)
+    print(chartContext["realTimePh"])
+    return render(request,"ph.html",chartContext)
 
+@login_required(login_url="/login/")
 def temperature(request):
-    return render(request,"temperature.html")
+    data = db.collection('testSensor').get()
+    temperatureData = []
+    phData=[]
+    turbidityData=[]
+    for doc in data:
+        a= doc.to_dict()
+        temp=a['temp']
+        ph=a['ph']
+        turb=a['turbi']
+        temperatureData.append(temp)
+        phData.append(ph)
+        turbidityData.append(turb)
+    realTimeTemp = database.child('Data').child('Temerature').get().val()
+    chartContext = {
+        "temperatureData":temperatureData,
+        "phData":phData,
+        "turbidityData":turbidityData,
+        "realTimeTemp":realTimeTemp
+    }
+    print("temp")
+    print(temperatureData)
+    print(chartContext)
+    print(chartContext["realTimeTemp"])
+    return render(request,"temperature.html",chartContext)
+    # return render(request,"temperature.html")
 
+@login_required(login_url="/login/")
 def turbidity(request):
-    return render(request,"turbidity.html")
+    data = db.collection('testSensor').get()
+    temperatureData = []
+    phData=[]
+    turbidityData=[]
+    for doc in data:
+        a= doc.to_dict()
+        temp=a['temp']
+        ph=a['ph']
+        turb=a['turbi']
+        temperatureData.append(temp)
+        phData.append(ph)
+        turbidityData.append(turb)
+    realTimeTurbidity = database.child('Data').child('Turbidity').get().val()
+    chartContext = {
+        "temperatureData":temperatureData,
+        "phData":phData,
+        "turbidityData":turbidityData,
+        "realTimeTurbidity":realTimeTurbidity
+    }
+    print("ph")
+    print(realTimeTurbidity)
+    print(chartContext["realTimeTurbidity"])
+    print(chartContext["turbidityData"])
+    return render(request,"turbidity.html",chartContext)
+
 
 def testing(request):
     return render(request,"testing.html")
