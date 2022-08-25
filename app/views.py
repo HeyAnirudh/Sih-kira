@@ -195,7 +195,7 @@ def signup(request):
     return render(request,"regis.html",message)
 
 
-def admin_main(request):
+def super_admin(request):
     data = db.collection('Userdb').get()
     print(data)
     school_name = []
@@ -215,6 +215,10 @@ def admin_main(request):
     
     states["total"]=len(data)
     return render(request,"super_admin.html",states)
+
+
+def norm_admin(request):
+    return render(request,"norm_admin.html")
 
 
    
@@ -361,20 +365,3 @@ def export(request):
     return response 
 
 
-def super_admin(request):
-    context={}
-    data = db.collection('Userdb').get()
-    upload=[]
-    for i in data:
-        new=i.to_dict()
-        state=new=['state']
-        upload.append(state)
-    print(upload)
-    for i in upload:
-        context[i]=upload.count(i)
-    
-    print(context)
-
-    
-
-    return render(request,"super-admin.html",context)
