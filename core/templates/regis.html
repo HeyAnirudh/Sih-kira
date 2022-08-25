@@ -8398,8 +8398,7 @@ textarea.form-control {
 							<!-- <div class="col"><input type="text" class="form-control" name="School_Name" placeholder="School Name" required="required"></div> -->
               <div class="col" style="color:black">
                 <!-- <input type="text" class="form-control" name="School_Name" placeholder="School Name" required="required"> -->
-        
-              
+                <div>
                   <select class="form-control" name="School_Name" id="school" placeholder="School Name" required="required" style="color:black">
                     <option value="" disabled selected>Select your option</option>
                     {% comment %} {% for myData in school_name %} {% endcomment %}
@@ -8408,13 +8407,27 @@ textarea.form-control {
                     <option style="color:black"> DAV </option>
                     <option style="color:black"> Oakridge international </option>
                     <option style="color:black"> St. Joseph school </option>
-                      
+                    
                   </select>                    
+                </div>
+                <br>
+                <div>
+                  <input type="text" class="form-control" name="School_id" placeholder="School id" required="required" autocomplete="off">
+                </div>
           
               </div>
-							<div class="col"><input type="text" class="form-control" name="School_id" placeholder="School id" required="required" autocomplete="off"></div>
+							<div class="col">
+                <div>
+                  <input type="text" class="form-control" name="State" placeholder="State" required="required" autocomplete="off">
+                 </div>  
+                 <br>
+                <div>
+                 <input type="text" class="form-control" name="City" placeholder="City" required="required" autocomplete="off">
+                </div>  
+              </div>
 						</div> 
-					</div>					
+					</div>		
+
 						<div class="form-group">
 							<input id="email" type="email" class="form-control" name="email" placeholder="Email" required="required" autocomplete="off">
 						</div>
