@@ -165,11 +165,11 @@ def singleLineChart(request):
     html_template = loader.get_template( 'charts.html' )
     return render(request ,'charts.html',chartContext)
 
-
+# login route
 def login(request):
     return render(request,'login.html')
 
-
+# register or signup route
 def signup(request):
     message = {}
     sch_name=request.POST.get("School_Name")
@@ -197,6 +197,7 @@ def signup(request):
     return render(request,"regis.html",message)
 
 
+# super admin route 
 def super_admin(request):
     data = db.collection('Userdb').get()
     print(data)
@@ -213,22 +214,32 @@ def super_admin(request):
     for i in upload:
         states[i]=upload.count(i)
     print(states)
-
-    
     states["total"]=len(data)
     return render(request,"super_admin.html",states)
 
-
+# state admin or normal admin
 def norm_admin(request):
-    return render(request,"norm_admin.html")
-
-
-   
-
+    data = db.collection('Userdb').get()
+    school_name = []
+    states={}
+    upload=[]
+    for doc in data:
+        a= doc.to_dict()
+        school_name.append(a["school_name"])
+        upload.append(a['state'])
+        print(a['state'])
+    print(upload)
+    for i in upload:
+        states[i]=upload.count(i)
+    states["total"]=len(data)
+    return render(request,"norm_admin.html",states)
     
+
+# landing or first page
 def landing(request):
     return render(request,"landing.html")
 
+# ph single page func
 @login_required(login_url="/login/")
 def ph(request):
     data = db.collection('testSensor').get()
@@ -256,6 +267,7 @@ def ph(request):
     print(chartContext["realTimePh"])
     return render(request,"ph.html",chartContext)
 
+# single temperature page func
 @login_required(login_url="/login/")
 def temperature(request):
     data = db.collection('testSensor').get()
@@ -284,6 +296,7 @@ def temperature(request):
     return render(request,"temperature.html",chartContext)
     # return render(request,"temperature.html")
 
+# single turbidity page func
 @login_required(login_url="/login/")
 def turbidity(request):
     data = db.collection('testSensor').get()
