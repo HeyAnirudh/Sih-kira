@@ -8,18 +8,19 @@
 {% block content %}
 
 <div class="content">
-	<div class="panel-header bg-primary-gradient">
-		<div class="page-inner py-5">
-			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+	<div class="panel-header bg-primary-gradient" style= "background-color:#337895">
+		<div class="page-inner py-5"style= "background-color:#337895">
+			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row" style= "background-color:#337895
+			">
 				<div>
 					<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
 					<h5 class="text-white op-7 mb-2">Your water data</h5>
 				</div>
 				<div class="ml-md-auto py-2 py-md-0">
 					<div class="dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+						<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
 							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-							style="border-radius:10px">
+							style=" color: white; background-color: #013358; border-radius:10px">
 							Add Sensors
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -28,7 +29,7 @@
 							<button class="dropdown-item" id="floride">Floride</button>
 						
 						</div>
-						<a href="{% url 'chart' %}">click</a>
+						<!-- <a href="{% url 'chart' %}">click</a> -->
 					</div>
 
 					<!-- <a href="#" class="btn btn-secondary btn-round">Add Sensor</a> -->
@@ -133,7 +134,7 @@
 				</div>                       
 			</div> 
 			{% endif %}
-		</div>
+	</div>
 		<br>
 		<br>
 		<div id="key" >    
