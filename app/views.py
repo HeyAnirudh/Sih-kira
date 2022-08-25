@@ -327,29 +327,20 @@ def export(request):
     #     writer.writerow(a['temp'])
     #     writer.writerow(a['ph'])
     #     writer.writerow(a['turbi'])
-    temperatureData = []
-    phData=[]
-    turbidityData=[]
+    printer = []
     for doc in data:
         a= doc.to_dict()
         temp=a['temp']
         ph=a['ph']
         turb=a['turbi']
-        temperatureData.append(temp)
-        phData.append(ph)
-        turbidityData.append(turb)
-    writer.writerow(temperatureData)
-    writer.writerow(phData)
-    writer.writerow(turbidityData)
-    chartContext = {
-        "temperatureData":temperatureData,
-        "phData":phData,
-        "turbidityData":turbidityData
-    }
+        temp = [temp, ph, turb]
+        printer.append(temp)
+    for text in printer:
+        writer.writerow(text)
 
     # for member in Member.objects.all().values_list('temperatureData', 'phData', 'turbidityData'):
     #     writer.writerow(member)
 
     response['Content-Disposition'] = 'attachment; filename="members.csv"'
 
-    return response
+    return response 
