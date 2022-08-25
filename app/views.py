@@ -31,11 +31,11 @@ firebase=pyrebase.initialize_app(config)
 auth=firebase.auth()
 database=firebase.database()
 
-
+# ph calculation
 def pH_Calc(pH):
     return 10 if pH == 7 else int(10-(abs(pH - 7)/0.5)*2) 
 
-
+# turbidity calculation
 def turb_Calc(turb):
     if turb > 0 and turb < 0.4:
         return 10
@@ -48,6 +48,7 @@ def turb_Calc(turb):
     else:
         return 0
 
+# temperature calculation
 def temp_Calc(temp):
     if temp in range(18,35):
         return 10
@@ -60,7 +61,7 @@ def temp_Calc(temp):
     else:
         return 2
 
-
+# water quality final ans func
 def waterQuality():
     pH = 7
     turb = 0.22222
@@ -68,7 +69,7 @@ def waterQuality():
     ans = (pH_Calc(pH) + turb_Calc(turb) + temp_Calc(temp))//3
     return ans
 
-
+# home route or index route
 @login_required(login_url="/login/")
 def index(request):
     # login starts
@@ -110,6 +111,7 @@ def index(request):
     db.collection('testSensor').document().set(context)
     html_template = loader.get_template( 'index.html' )
     return HttpResponse(html_template.render(context, request))
+
 
 @login_required(login_url="/login/")
 def pages(request):
@@ -164,7 +166,7 @@ def singleLineChart(request):
     return render(request ,'charts.html',chartContext)
 
 
-def trail(request):
+def login(request):
     return render(request,'login.html')
 
 
