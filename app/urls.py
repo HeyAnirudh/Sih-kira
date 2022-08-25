@@ -18,10 +18,8 @@ urlpatterns = [
     path("ph/",views.ph,name="ph"),
     path("temperature/",views.temperature,name="temperature"),
     path("turbidity/",views.turbidity,name="turbidity"),
-    path("admin-main/",views.admin_main,name="admin-main"),
+    path("super/",views.admin_main,name="super"),
     path("download/",views.export,name="download"),
     path("testing/",views.testing,name="testing"),
     path("register_test/",views.register_test,name="register_test")
-
-
 ]

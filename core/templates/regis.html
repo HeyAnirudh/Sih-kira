@@ -8399,6 +8399,20 @@ textarea.form-control {
               <div class="col" style="color:black">
                 <!-- <input type="text" class="form-control" name="School_Name" placeholder="School Name" required="required"> -->
                 <div>
+
+                  <select class="form-control" name="School_Name" id="school" placeholder="School Name" required="required" style="color:black" onchange='CheckSchool(this.value);'> 
+                    <option value="others">others</option>
+                    <option value="dps"> Delhi public school </option>
+                  </select>
+                <!-- <input type="text" name="School_Name" id="School_Name" style='display:none;'/> --> 
+                <br>
+                <input type="text" class="form-control" name="School_Name" id="School_Name" placeholder="School Name" required="required" autocomplete="off">
+                                   
+                </div>
+                <br>
+                <div>
+                  <input type="text" class="form-control" name="Student_id" placeholder="Student id" required="required" autocomplete="off">
+
                   <select class="form-control" name="School_Name" id="school" placeholder="School Name" required="required" style="color:black">
                     <option value="" disabled selected>Select your option</option>
                     {% comment %} {% for myData in school_name %} {% endcomment %}
@@ -8426,7 +8440,11 @@ textarea.form-control {
                 </div>  
               </div>
 						</div> 
+
+					</div>
+
 					</div>		
+
 
 						<div class="form-group">
 							<input id="email" type="email" class="form-control" name="email" placeholder="Email" required="required" autocomplete="off">
@@ -8460,6 +8478,14 @@ textarea.form-control {
 
 	
 	<script>
+    function CheckSchool(val){
+      var element=document.getElementById('School_Name');
+      console.log(element);
+      if(val=='others')
+        element.style.display='block';
+      else  
+        element.style.display='none';
+      }
 
 		function validation()
 		{

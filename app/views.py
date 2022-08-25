@@ -171,7 +171,10 @@ def trail(request):
 def signup(request):
     message = {}
     sch_name=request.POST.get("School_Name")
-    sch_id= request.POST.get("School_id")
+    sch_id= request.POST.get("Student_id")
+    state=request.POST.get("State")
+    city=request.POST.get("City")
+
     email=request.POST.get("email")
     passw = request.POST.get("password")
     if sch_name != None or sch_id != None or email != None or passw!=None:
@@ -182,7 +185,7 @@ def signup(request):
             email_ids.append(a["email"])
         print(email_ids)
         if email not in email_ids:    
-            db.collection('Userdb').document(email).set({"school_name":sch_name,"school_id":sch_id,"email":email,"Password":passw})
+            db.collection('Userdb').document(email).set({"school_name":sch_name,"school_id":sch_id,"email":email,"Password":passw,"state":state,"city":city})
             user=auth.create_user_with_email_and_password(email,passw)
             uid = user['localId']
             idtoken = request.session['uid']
@@ -196,14 +199,26 @@ def admin_main(request):
     data = db.collection('Userdb').get()
     print(data)
     school_name = []
+    states={}
+    upload=[]
     for doc in data:
         a= doc.to_dict()
+        print(a)
         school_name.append(a["school_name"])
+        upload.append(a['state'])
+        print(a['state'])
+    print(upload)
+    for i in upload:
+        states[i]=upload.count(i)
+    print(states)
 
-    message={"total":len(data)}
-    message["school_name"]=school_name
-    print(message["school_name"])
-    return render(request,"admin-main.html",message)
+    
+    states["total"]=len(data)
+    return render(request,"super_admin.html",states)
+
+
+   
+
     
 def landing(request):
     return render(request,"landing.html")
@@ -344,3 +359,22 @@ def export(request):
     response['Content-Disposition'] = 'attachment; filename="members.csv"'
 
     return response 
+
+
+def super_admin(request):
+    context={}
+    data = db.collection('Userdb').get()
+    upload=[]
+    for i in data:
+        new=i.to_dict()
+        state=new=['state']
+        upload.append(state)
+    print(upload)
+    for i in upload:
+        context[i]=upload.count(i)
+    
+    print(context)
+
+    
+
+    return render(request,"super-admin.html",context)
