@@ -22,5 +22,6 @@ urlpatterns = [
     path("norm_admin/",views.norm_admin,name="norm_admin"),
     path("download/",views.export,name="download"),
     path("testing/",views.testing,name="testing"),
-    path("register_test/",views.register_test,name="register_test")
+    path("register_test/",views.register_test,name="register_test"),
+    path("state_schools/<str:state_name>",views.state_schools,name="state_schools")
 ]

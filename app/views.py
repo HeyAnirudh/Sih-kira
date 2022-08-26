@@ -227,6 +227,19 @@ def super_admin(request):
         a=i.to_dict()
         nameslist.append(a["school_name"])
     states["school_list"]=nameslist
+
+
+    data1 = db.collection('testSensor').get()
+    ans=[]
+
+    for doc1 in data1:
+        a= doc1.to_dict()
+        ans.append((pH_Calc(a['ph']) + turb_Calc(a['turbi']) + temp_Calc(a['temp']))//3)
+    print(ans)
+    
+    states['avg']=(sum(ans)//len(ans))*10
+   
+
     return render(request,"super_admin.html",states)
 
 # state admin or normal admin
@@ -392,3 +405,9 @@ def export(request):
     return response 
 
 
+def state_schools(request,state_name):
+    data = db.collection('Userdb').get()
+        
+    context={}
+    context["state_name"] = state_name
+    return render(request,"state_schools.html",context)
