@@ -16,6 +16,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="/core/static/assets/js/mapdata.js"></script>
     <script src="/core/static/assets/js/countrymap.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script>
         var simplemaps_countrymap_mapdata = {
             main_settings: {
@@ -378,7 +379,7 @@
 
 <body>
 
-    <div class="container">
+    <div class="container ">
         <br>
         <br>
         <div class="row">
@@ -394,7 +395,8 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ total }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <span class="material-symbols-outlined">school
+                                    </span>
                             </div>
                         </div>
                     </div>
@@ -412,7 +414,7 @@
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">12,15,000</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                <span class="material-symbols-outlined">school</span>
                             </div>
                         </div>
                     </div>
@@ -441,7 +443,9 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                <span class="material-symbols-outlined">
+                                    school
+                                    </span>
                             </div>
                         </div>
                     </div>
@@ -455,55 +459,54 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Pending Requests</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    State Admins </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                <span class="material-symbols-outlined">
+                                    school
+                                    </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="/login/" style="position: relative;left:522px" ><span class="mr-3"></span>Logout</a>
+        <!-- <button class="btn btn-primary text-center" style="position: relative;left:522px" href="{% url 'super_admin' %}">Logout</button> -->
         <br>
 
-        <div class="row">
+        
+    <br>
+    <hr>
+    <br>
+
+    <div id="map" style="position:relative;margin-left: 143px;"></div>
+    <div class="container" style="position :relative;top: 10px;">
+
+        <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">School Report</h4>
+                    <h4 class="card-title text-center">School Data <strong>Telangana</strong> </h4>
 
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">School name</label>
-                            <select class="form-control" id="school">
-                                {% for myData in school_name %}
-                                <option>{{ myData }} </option>
 
+                            <ul class="list-group">
+                                {% for myData in school_list %}
+                                <li class="list-group-item " ><strong>{{ myData }}</strong> pH= 6.5 Turb=0.5 Temp=24</li>
+                                <div class="col-10">
+                                <button class="btn btn-danger" style="position: relative;top:-45px;right:-924px">Mail</button></div>
                                 {% endfor %}
-                            </select>
+                              </ul>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Time Period:</label>
-                            <br>
-                            <label for="exampleInputPassword1">From:</label>
-                            <input type="date" id="from" name="from">
-                            <label for="exampleInputPassword1">To:</label>
-                            <input type="date" id="to" name="to">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
 
     </div>
-    <br>
-    <hr>
-    <br>
-
-    <div id="map" style="position:relative;margin-left: 109px;"></div>
-
+</div>
 
 </body>
 

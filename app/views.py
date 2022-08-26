@@ -211,10 +211,21 @@ def super_admin(request):
         upload.append(a['state'])
         print(a['state'])
     print(upload)
+    print(school_name)
     for i in upload:
         states[i]=upload.count(i)
     print(states)
     states["total"]=len(data)
+    print("hello")
+
+    getnames = db.collection(u'Userdb')
+    names = getnames.where(u"state",u"==",u"Telangana").stream()
+    nameslist = []
+    for i in names:
+        print(i.to_dict())
+        a=i.to_dict()
+        nameslist.append(a["school_name"])
+    states["school_list"]=nameslist
     return render(request,"super_admin.html",states)
 
 # state admin or normal admin
