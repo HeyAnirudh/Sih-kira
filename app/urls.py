@@ -23,5 +23,7 @@ urlpatterns = [
     path("download/",views.export,name="download"),
     path("testing/",views.testing,name="testing"),
     path("register_test/",views.register_test,name="register_test"),
-    path("state_schools/<str:state_name>",views.state_schools,name="state_schools")
+    path("state_schools/<str:state_name>",views.state_schools,name="state_schools"),
+    path("email_loop/",views.email_loop,name="email_loop")
+
 ]
