@@ -216,6 +216,7 @@ def super_admin(request):
         states[i]=upload.count(i)
     print(states)
     states["total"]=len(data)
+    states["stud"]=len(data)*10
     print("hello")
 
     getnames = db.collection(u'Userdb')

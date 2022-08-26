@@ -42,6 +42,7 @@
 	  transition: max-height 0.2s ease-out;
 	}
 	</style>
+<body>
 <div class="content" style="align:center;"">
 		
 		<div class="card" style="align:center;font-family: 'Montserrat', sans-serif; width:85em; margin-left: auto;margin-right: auto;">
@@ -50,8 +51,8 @@
 			</div>
 
 			<div class="card-body">
-				<div class = "col">
-					<div class="col-md-12">
+				<div class = "row">
+					<div class="col-md-6">
 						<div class="card">
 							<div class="card-header">
 								<div class="card-title text-center">Your pH Value</div>
@@ -64,6 +65,20 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="col-md-6">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title text-center">Legend</div>
+							</div>
+							<div class="card-body">
+								<img src="../static/assets/img/pH.png" width=60% style="position: relative;margin-left:22%"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col">
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
@@ -76,8 +91,8 @@
 							</div>
 						</div>
 					</div>
-
-				</div>
+				<div>
+			</div>
 		
 				<div class="collapsible">
 
@@ -133,6 +148,7 @@
 		</div>
 
 </div>
+</div> </div></body>
 {% endblock content %}
 
 
