@@ -406,8 +406,15 @@ def export(request):
 
 
 def state_schools(request,state_name):
-    data = db.collection('Userdb').get()
-        
-    context={}
-    context["state_name"] = state_name
+    data = db.collection('Userdb')
+    names = data.where(u"state",u"==",state_name).stream()
+    schools_list = []
+    context = {}
+    print(names)
+    for i in names:
+        print(i.to_dict())
+        a=i.to_dict()
+        schools_list.append(a)
+    context['alldata'] = schools_list
+    print(context['alldata'])
     return render(request,"state_schools.html",context)

@@ -17,7 +17,8 @@
         <br>
         <br>
         <div class="container">
-            {{ state_name }}
+            
+            
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -28,16 +29,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for data in context %}
-                    <tr>
-                        <th scope="row">1</th>
-                        <td></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    {% endfor %}
+
+
+                    {{  alldata }}
+                    
+                        {% for data in schools_list %}
+                        <tr>
+                            <td scope="col">#</td>
+                            <td scope="col">{{  data.state }}</td>
+                            <td scope="col"></td>
+                            <td scope="col">Handle</td>
+                        </tr>
+                        {% endfor %}
+                    
                 </tbody>
             </table>
+            
         </div>
         </body>
 </html>
