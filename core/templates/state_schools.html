@@ -22,23 +22,19 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">school name</th>
+                        <th scope="col">city</th>
+                        <th scope="col">email</th>
+                        <th scope="col">school id</th>
                     </tr>
                 </thead>
-                <tbody>
-
-
-                    {{  alldata }}
-                    
-                        {% for data in schools_list %}
+                <tbody id="tbody">
+                        {% for data in alldata %}
                         <tr>
-                            <td scope="col">#</td>
-                            <td scope="col">{{  data.state }}</td>
-                            <td scope="col"></td>
-                            <td scope="col">Handle</td>
+                            <td scope="col">{{data.school_name}}</td>
+                            <td scope="col">{{data.city}}</td>
+                            <td scope="col">{{data.email}}</td>
+                            <td scope="col">{{data.school_id}}</td>
                         </tr>
                         {% endfor %}
                     
@@ -46,5 +42,9 @@
             </table>
             
         </div>
+        <script>
+            console.log("{{ alldata }}")
+            const targettable = document.getElementById("")
+        </script>
         </body>
 </html>

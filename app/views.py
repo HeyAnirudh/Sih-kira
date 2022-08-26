@@ -417,4 +417,5 @@ def state_schools(request,state_name):
         schools_list.append(a)
     context['alldata'] = schools_list
     print(context['alldata'])
+    # context['array']=['1',2,3,4,45,6,7]
     return render(request,"state_schools.html",context)
