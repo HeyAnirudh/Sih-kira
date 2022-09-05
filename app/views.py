@@ -2,6 +2,7 @@ from email import message
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
+from http.client import HTTPResponse
 import smtplib
 import os
 from tkinter.tix import Tree
@@ -24,13 +25,14 @@ db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
 
 config= {
-  "apiKey": "AIzaSyBOmFCtJkyO3cGgIGFC2OuDo5UL5NltRbs",
-  "authDomain": "hydrosense-2cc3a.firebaseapp.com",
-  "databaseURL": "https://hydrosense-2cc3a-default-rtdb.firebaseio.com",
-  "projectId": "hydrosense-2cc3a",
-  "storageBucket": "hydrosense-2cc3a.appspot.com",
-  "messagingSenderId": "779850611309",
-  "appId": "1:779850611309:web:b1d7aa93dfb68ab113dd64",
+  "apiKey": "AIzaSyChe8B3bBWNaFEwwFA2MJQqDH83-pzLkIA",
+  "authDomain": "hydrosense-d98e4.firebaseapp.com",
+  "projectId": "hydrosense-d98e4",
+  "storageBucket": "hydrosense-d98e4.appspot.com",
+  "messagingSenderId": "868232659126",
+  "appId": "1:868232659126:web:e689e5d786b20ee1e32617",
+  "measurementId": "G-NBTH77D4B8",
+  "databaseURL" : "https://hydrosense-d98e4-default-rtdb.firebaseio.com"
 }
 firebase=pyrebase.initialize_app(config)
 auth=firebase.auth()
@@ -75,7 +77,7 @@ def waterQuality():
     return ans
 
 # home route or index route
-@login_required(login_url="/login/")
+# @login_required(login_url="/login/")
 def index(request):
     # login starts
     email=request.POST.get("email")
@@ -85,9 +87,9 @@ def index(request):
         user = auth.sign_in_with_email_and_password(email,passw)
     except:
         message = "invalid crediantials"
-        return render(request,"nahi.html",{"msg":message})
-    session_id=user['idToken']
-    request.session['uid']=str(session_id)
+        return HTTPResponse("invalid user")
+    # session_id=user['idToken']
+    # request.session['uid']=str(session_id)
 
     #login ends
 
@@ -118,7 +120,10 @@ def index(request):
     return HttpResponse(html_template.render(context, request))
 
 
-@login_required(login_url="/login/")
+
+
+    
+# @login_required(login_url="/login/")
 def pages(request):
     context = {}
     print(request.user.username)
@@ -144,7 +149,7 @@ def pages(request):
 
 
 
-@login_required(login_url="/login/")
+# @login_required(login_url="/login/")
 def singleLineChart(request):
 
     
@@ -194,8 +199,8 @@ def signup(request):
         if email not in email_ids:    
             db.collection('Userdb').document(email).set({"school_name":sch_name,"school_id":sch_id,"email":email,"Password":passw,"state":state,"city":city})
             user=auth.create_user_with_email_and_password(email,passw)
-            uid = user['localId']
-            idtoken = request.session['uid']
+            # uid = user['localId']
+            # idtoken = request.session['uid']
             message["messages"] = 1
         else:
             message["messages"] = 2
@@ -270,7 +275,7 @@ def landing(request):
     return render(request,"landing.html")
 
 # ph single page func
-@login_required(login_url="/login/")
+# @login_required(login_url="/login/")
 def ph(request):
     data = db.collection('testSensor').get()
     temperatureData = []
@@ -298,7 +303,7 @@ def ph(request):
     return render(request,"ph.html",chartContext)
 
 # single temperature page func
-@login_required(login_url="/login/")
+# @login_required(login_url="/login/")
 def temperature(request):
     data = db.collection('testSensor').get()
     temperatureData = []
@@ -327,7 +332,7 @@ def temperature(request):
     # return render(request,"temperature.html")
 
 # single turbidity page func
-@login_required(login_url="/login/")
+# @login_required(login_url="/login/")
 def turbidity(request):
     data = db.collection('testSensor').get()
     temperatureData = []
