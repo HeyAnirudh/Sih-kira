@@ -25,14 +25,15 @@ db.collection('test').document('testdoc').set({"name":"keshav","age":699})
 
 
 config= {
-  "apiKey": "AIzaSyChe8B3bBWNaFEwwFA2MJQqDH83-pzLkIA",
-  "authDomain": "hydrosense-d98e4.firebaseapp.com",
-  "projectId": "hydrosense-d98e4",
-  "storageBucket": "hydrosense-d98e4.appspot.com",
-  "messagingSenderId": "868232659126",
-  "appId": "1:868232659126:web:e689e5d786b20ee1e32617",
-  "measurementId": "G-NBTH77D4B8",
-  "databaseURL" : "https://hydrosense-d98e4-default-rtdb.firebaseio.com"
+ "YOUR CONFIG JSON IN THE FOLLOWING FORMAT"
+   "apiKey": "API KEY",
+  "authDomain": "APP NAME",
+  "projectId": "PROJECT ID",
+  "storageBucket": "STORAGE BUCKET",
+  "messagingSenderId": "",
+  "appId": "",
+  "measurementId": "",
+  "databaseURL" : ""
 }
 firebase=pyrebase.initialize_app(config)
 auth=firebase.auth()
